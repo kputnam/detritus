@@ -1,0 +1,3035 @@
+Africa/Abidjan
+  LMT	 -01:43
+  GMT	 +00:00
+Africa/Accra
+  LMT	 -01:59
+  GMT	 +00:00
+  GHST	 +00:20
+Africa/Addis_Ababa
+  LMT	 +02:34
+  ADMT	 +02:35
+  EAT	 +03:00
+Africa/Algiers
+  CEST	 +02:00
+  LMT	 +00:12
+  WEST	 +01:00
+  PMT	 +00:09
+  CET	 +01:00
+  WET	 +00:00
+Africa/Asmara
+  LMT	 +02:35
+  EAT	 +03:00
+  AMT	 +02:35
+  ADMT	 +02:35
+Africa/Asmera
+Africa/Bamako
+  LMT	 -01:28
+  GMT	 +00:00
+  WAT	 -01:00
+Africa/Bangui
+  LMT	 +01:14
+  WAT	 +01:00
+Africa/Banjul
+  LMT	 -02:53
+  GMT	 +00:00
+  BMT	 -02:53
+  WAT	 -01:00
+Africa/Bissau
+  LMT	 -02:57
+  WAT	 -01:00
+  GMT	 +00:00
+Africa/Blantyre
+  LMT	 +02:20
+  CAT	 +02:00
+Africa/Brazzaville
+  LMT	 +01:01
+  WAT	 +01:00
+Africa/Bujumbura
+  LMT	 +01:57
+  CAT	 +02:00
+Africa/Cairo
+  LMT	 +02:05
+  EET	 +02:00
+  EEST	 +03:00
+Africa/Casablanca
+  LMT	 -01:29
+  CET	 +01:00
+  WET	 +00:00
+  WEST	 +01:00
+Africa/Ceuta
+  LMT	 -01:38
+  CET	 +01:00
+  WET	 +00:00
+  CEST	 +02:00
+  WEST	 +01:00
+Africa/Conakry
+  LMT	 -01:05
+  GMT	 +00:00
+  WAT	 -01:00
+Africa/Dakar
+  LMT	 -02:50
+  WAT	 -01:00
+  GMT	 +00:00
+Africa/Dar_es_Salaam
+  LMT	 +02:37
+  EAT	 +03:00
+  BEAUT	 +02:44
+Africa/Djibouti
+  LMT	 +02:52
+  EAT	 +03:00
+Africa/Douala
+  LMT	 +00:38
+  WAT	 +01:00
+Africa/El_Aaiun
+  LMT	 -01:07
+  WAT	 -01:00
+  WET	 +00:00
+Africa/Freetown
+  SLST	 +01:00
+  LMT	 -01:07
+  SLST	 -01:40
+  FMT	 -01:07
+  GMT	 +00:00
+  WAT	 +00:00
+  WAT	 -01:00
+Africa/Gaborone
+  LMT	 +01:43
+  CAT	 +02:00
+  CAST	 +03:00
+Africa/Harare
+  LMT	 +02:04
+  CAT	 +02:00
+Africa/Johannesburg
+  LMT	 +01:52
+  SAST	 +03:00
+  SAST	 +01:30
+  SAST	 +02:00
+Africa/Kampala
+  LMT	 +02:09
+  BEAUT	 +02:44
+  EAT	 +03:00
+  BEAT	 +02:30
+Africa/Khartoum
+  LMT	 +02:10
+  EAT	 +03:00
+  CAT	 +02:00
+  CAST	 +03:00
+Africa/Kigali
+  LMT	 +02:00
+  CAT	 +02:00
+Africa/Kinshasa
+  LMT	 +01:01
+  WAT	 +01:00
+Africa/Lagos
+  LMT	 +00:13
+  WAT	 +01:00
+Africa/Libreville
+  LMT	 +00:37
+  WAT	 +01:00
+Africa/Lome
+  LMT	 +00:04
+  GMT	 +00:00
+Africa/Luanda
+  LMT	 +00:52
+  AOT	 +00:52
+  WAT	 +01:00
+Africa/Lubumbashi
+  LMT	 +01:49
+  CAT	 +02:00
+Africa/Lusaka
+  LMT	 +01:53
+  CAT	 +02:00
+Africa/Malabo
+  LMT	 +00:35
+  GMT	 +00:00
+  WAT	 +01:00
+Africa/Maputo
+  LMT	 +02:10
+  CAT	 +02:00
+Africa/Maseru
+  LMT	 +01:50
+  SAST	 +02:00
+  SAST	 +03:00
+Africa/Mbabane
+  LMT	 +02:04
+  SAST	 +02:00
+Africa/Mogadishu
+  LMT	 +03:01
+  EAT	 +03:00
+  BEAT	 +02:30
+Africa/Monrovia
+  LMT	 -01:16
+  GMT	 +00:00
+  MMT	 -01:16
+  LRT	 -01:15
+Africa/Nairobi
+  LMT	 +02:27
+  BEAUT	 +02:44
+  EAT	 +03:00
+  BEAT	 +02:30
+Africa/Ndjamena
+  LMT	 +01:00
+  WAT	 +01:00
+  WAST	 +02:00
+Africa/Niamey
+  LMT	 +00:08
+  WAT	 +01:00
+  WAT	 -01:00
+  GMT	 +00:00
+Africa/Nouakchott
+  LMT	 -02:56
+  GMT	 +00:00
+  WAT	 -01:00
+Africa/Ouagadougou
+  LMT	 -01:53
+  GMT	 +00:00
+Africa/Porto-Novo
+  LMT	 +00:10
+  GMT	 +00:00
+  WAT	 +01:00
+Africa/Sao_Tome
+  LMT	 +00:26
+  LMT	 -01:23
+  GMT	 +00:00
+Africa/Timbuktu
+Africa/Tripoli
+  LMT	 +00:52
+  EET	 +02:00
+  CET	 +01:00
+  CEST	 +02:00
+Africa/Tunis
+  LMT	 +00:40
+  CEST	 +02:00
+  PMT	 +00:09
+  CET	 +01:00
+Africa/Windhoek
+  WAT	 +01:00
+  LMT	 +01:08
+  SAST	 +03:00
+  SWAT	 +01:30
+  WAST	 +02:00
+  CAT	 +02:00
+  SAST	 +02:00
+America/Adak
+  BST	 -11:00
+  LMT	 +12:13
+  HAST	 -10:00
+  NWT	 -10:00
+  LMT	 -12:13
+  BDT	 -10:00
+  HADT	 -09:00
+  NPT	 -10:00
+  AHST	 -10:00
+  NST	 -11:00
+America/Anchorage
+  AHST	 -10:00
+  LMT	 +14:00
+  AKST	 -09:00
+  CAWT	 -09:00
+  LMT	 -10:00
+  AHDT	 -09:00
+  AKDT	 -08:00
+  CAPT	 -09:00
+  YST	 -09:00
+  CAT	 -10:00
+America/Anguilla
+  LMT	 -05:47
+  AST	 -04:00
+America/Antigua
+  LMT	 -05:52
+  EST	 -05:00
+  AST	 -04:00
+America/Araguaina
+  LMT	 -04:47
+  BRT	 -03:00
+  BRST	 -02:00
+America/Argentina/Buenos_Aires
+  ARST	 -02:00
+  LMT	 -04:06
+  ARST	 -03:00
+  CMT	 -05:43
+  ART	 -03:00
+  ART	 -04:00
+America/Argentina/Catamarca
+  ARST	 -02:00
+  LMT	 -05:36
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  ART	 -04:00
+America/Argentina/ComodRivadavia
+America/Argentina/Cordoba
+  ARST	 -02:00
+  LMT	 -05:43
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  ART	 -04:00
+America/Argentina/Jujuy
+  ARST	 -02:00
+  LMT	 -05:38
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  WARST	 -03:00
+  ART	 -04:00
+America/Argentina/La_Rioja
+  ARST	 -02:00
+  LMT	 -05:32
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  ART	 -04:00
+America/Argentina/Mendoza
+  ARST	 -02:00
+  LMT	 -05:24
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  WARST	 -03:00
+  ART	 -04:00
+America/Argentina/Rio_Gallegos
+  ARST	 -02:00
+  LMT	 -05:23
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  ART	 -04:00
+America/Argentina/San_Juan
+  ARST	 -02:00
+  LMT	 -05:25
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  ART	 -04:00
+America/Argentina/Tucuman
+  ARST	 -02:00
+  LMT	 -05:39
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  ART	 -04:00
+America/Argentina/Ushuaia
+  ARST	 -02:00
+  LMT	 -05:26
+  ARST	 -03:00
+  CMT	 -05:43
+  WART	 -04:00
+  ART	 -03:00
+  ART	 -04:00
+America/Aruba
+  LMT	 -05:19
+  ANT	 -05:30
+  AST	 -04:00
+America/Asuncion
+  LMT	 -04:09
+  PYT	 -03:00
+  AMT	 -04:09
+  PYST	 -03:00
+  PYT	 -04:00
+America/Atikokan
+  EST	 -05:00
+  LMT	 -07:53
+  CWT	 -05:00
+  CST	 -06:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Atka
+America/Bahia
+  LMT	 -03:25
+  BRT	 -03:00
+  BRST	 -02:00
+America/Barbados
+  LMT	 -04:01
+  ADT	 -03:00
+  BMT	 -04:01
+  AST	 -04:00
+America/Belem
+  LMT	 -04:46
+  BRT	 -03:00
+  BRST	 -02:00
+America/Belize
+  LMT	 -06:07
+  CDT	 -05:00
+  CST	 -06:00
+  CHDT	 -06:30
+America/Blanc-Sablon
+  LMT	 -04:11
+  AWT	 -03:00
+  AST	 -04:00
+  APT	 -03:00
+  ADT	 -03:00
+America/Boa_Vista
+  LMT	 -05:57
+  AMT	 -04:00
+  AMST	 -03:00
+America/Bogota
+  LMT	 -05:03
+  COST	 -04:00
+  BMT	 -05:03
+  COT	 -05:00
+America/Boise
+  MPT	 -06:00
+  LMT	 -08:15
+  MST	 -07:00
+  PST	 -08:00
+  MDT	 -06:00
+  MWT	 -06:00
+  PDT	 -07:00
+America/Buenos_Aires
+America/Cambridge_Bay
+  MDT	 -06:00
+  zzz	 +00:00
+  EST	 -05:00
+  MPT	 -06:00
+  MST	 -07:00
+  CST	 -06:00
+  MDDT	 -05:00
+  CDT	 -05:00
+  MWT	 -06:00
+America/Campo_Grande
+  LMT	 -04:21
+  AMT	 -04:00
+  AMST	 -03:00
+America/Cancun
+  LMT	 -06:12
+  EDT	 -04:00
+  CST	 -06:00
+  CDT	 -05:00
+  EST	 -05:00
+America/Caracas
+  LMT	 -05:32
+  VET	 -04:00
+  CMT	 -05:32
+  VET	 -05:30
+America/Catamarca
+America/Cayenne
+  LMT	 -04:30
+  GFT	 -04:00
+  GFT	 -03:00
+America/Cayman
+  LMT	 -06:34
+  KMT	 -06:52
+  EST	 -05:00
+America/Chicago
+  CPT	 -05:00
+  LMT	 -06:09
+  EST	 -05:00
+  CST	 -06:00
+  CWT	 -05:00
+  CDT	 -05:00
+America/Chihuahua
+  LMT	 -08:55
+  CDT	 -05:00
+  MST	 -07:00
+  MDT	 -06:00
+  CST	 -06:00
+America/Coral_Harbour
+America/Cordoba
+America/Costa_Rica
+  LMT	 -06:23
+  CDT	 -05:00
+  SJMT	 -06:23
+  CST	 -06:00
+America/Cuiaba
+  LMT	 -04:15
+  AMT	 -04:00
+  AMST	 -03:00
+America/Curacao
+  LMT	 -05:24
+  ANT	 -05:30
+  AST	 -04:00
+America/Danmarkshavn
+  LMT	 -02:45
+  GMT	 +00:00
+  WGT	 -03:00
+  WGST	 -02:00
+America/Dawson
+  YDDT	 -07:00
+  LMT	 -10:42
+  YWT	 -08:00
+  YST	 -09:00
+  PST	 -08:00
+  YPT	 -08:00
+  PDT	 -07:00
+  YDT	 -08:00
+America/Dawson_Creek
+  MST	 -07:00
+  LMT	 -09:59
+  PWT	 -07:00
+  PST	 -08:00
+  PPT	 -07:00
+  PDT	 -07:00
+America/Denver
+  LMT	 -07:00
+  MWT	 -06:00
+  MST	 -07:00
+  MPT	 -06:00
+  MDT	 -06:00
+America/Detroit
+  EDT	 -04:00
+  LMT	 -06:27
+  EWT	 -04:00
+  CST	 -06:00
+  EPT	 -04:00
+  EST	 -05:00
+America/Dominica
+  LMT	 -05:54
+  AST	 -04:00
+America/Edmonton
+  LMT	 -08:26
+  MWT	 -06:00
+  MST	 -07:00
+  MPT	 -06:00
+  MDT	 -06:00
+America/Eirunepe
+  LMT	 -05:20
+  ACT	 -05:00
+  ACST	 -04:00
+America/El_Salvador
+  LMT	 -06:03
+  CST	 -06:00
+  CDT	 -05:00
+America/Ensenada
+America/Fort_Wayne
+America/Fortaleza
+  LMT	 -03:26
+  BRT	 -03:00
+  BRST	 -02:00
+America/Glace_Bay
+  LMT	 -04:00
+  AWT	 -03:00
+  AST	 -04:00
+  APT	 -03:00
+  ADT	 -03:00
+America/Godthab
+  LMT	 -04:33
+  WGT	 -03:00
+  WGST	 -02:00
+America/Goose_Bay
+  NWT	 -03:30
+  LMT	 -05:58
+  ADT	 -03:00
+  NST	 -04:30
+  NST	 -04:29
+  NPT	 -03:30
+  ADDT	 -02:00
+  NDT	 -03:30
+  AST	 -04:00
+  NDT	 -03:29
+America/Grand_Turk
+  LMT	 -05:15
+  EDT	 -04:00
+  KMT	 -06:52
+  EST	 -05:00
+America/Grenada
+  LMT	 -05:53
+  AST	 -04:00
+America/Guadeloupe
+  LMT	 -05:53
+  AST	 -04:00
+America/Guatemala
+  LMT	 -07:57
+  CST	 -06:00
+  CDT	 -05:00
+America/Guayaquil
+  LMT	 -06:40
+  QMT	 -06:46
+  ECT	 -05:00
+America/Guyana
+  LMT	 -04:07
+  GYT	 -03:00
+  GBGT	 -04:15
+  GYT	 -04:00
+  GYT	 -04:15
+America/Halifax
+  LMT	 -05:45
+  AWT	 -03:00
+  AST	 -04:00
+  APT	 -03:00
+  ADT	 -03:00
+America/Havana
+  LMT	 -06:30
+  CDT	 -04:00
+  HMT	 -06:30
+  CST	 -05:00
+America/Hermosillo
+  LMT	 -08:36
+  PST	 -08:00
+  MST	 -07:00
+  MDT	 -06:00
+  CST	 -06:00
+America/Indiana/Indianapolis
+  EST	 -05:00
+  LMT	 -06:15
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indiana/Knox
+  EST	 -05:00
+  LMT	 -06:13
+  CWT	 -05:00
+  CST	 -06:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indiana/Marengo
+  EST	 -05:00
+  LMT	 -06:14
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indiana/Petersburg
+  EST	 -05:00
+  LMT	 -06:10
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indiana/Tell_City
+  EST	 -05:00
+  LMT	 -06:12
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indiana/Vevay
+  EST	 -05:00
+  LMT	 -06:19
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indiana/Vincennes
+  EST	 -05:00
+  LMT	 -06:09
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indiana/Winamac
+  EST	 -05:00
+  LMT	 -06:13
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Indianapolis
+America/Inuvik
+  zzz	 +00:00
+  MST	 -07:00
+  PST	 -08:00
+  MDT	 -06:00
+  PDDT	 -06:00
+America/Iqaluit
+  EDT	 -04:00
+  zzz	 +00:00
+  EST	 -05:00
+  EWT	 -04:00
+  CST	 -06:00
+  EDDT	 -03:00
+  CDT	 -05:00
+  EPT	 -04:00
+America/Jamaica
+  LMT	 -06:52
+  EDT	 -04:00
+  KMT	 -06:52
+  EST	 -05:00
+America/Jujuy
+America/Juneau
+  PDT	 -07:00
+  LMT	 +15:02
+  AKDT	 -08:00
+  PWT	 -07:00
+  LMT	 -09:02
+  YST	 -09:00
+  PPT	 -07:00
+  AKST	 -09:00
+  PST	 -08:00
+America/Kentucky/Louisville
+  EST	 -05:00
+  LMT	 -06:16
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Kentucky/Monticello
+  EST	 -05:00
+  LMT	 -06:20
+  CWT	 -05:00
+  CST	 -06:00
+  EDT	 -04:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Knox_IN
+America/La_Paz
+  LMT	 -05:27
+  BOT	 -04:00
+  CMT	 -05:27
+  BOST	 -04:27
+America/Lima
+  LMT	 -06:51
+  PEST	 -04:00
+  LMT	 -06:51
+  PET	 -05:00
+America/Los_Angeles
+  LMT	 -08:07
+  PWT	 -07:00
+  PST	 -08:00
+  PPT	 -07:00
+  PDT	 -07:00
+America/Louisville
+America/Maceio
+  LMT	 -03:37
+  BRT	 -03:00
+  BRST	 -02:00
+America/Managua
+  LMT	 -06:14
+  EST	 -05:00
+  MMT	 -06:14
+  CDT	 -05:00
+  CST	 -06:00
+America/Manaus
+  LMT	 -05:59
+  AMT	 -04:00
+  AMST	 -03:00
+America/Martinique
+  LMT	 -05:55
+  ADT	 -03:00
+  FFMT	 -05:55
+  AST	 -04:00
+America/Mazatlan
+  LMT	 -08:54
+  PST	 -08:00
+  MST	 -07:00
+  MDT	 -06:00
+  CST	 -06:00
+America/Mendoza
+America/Menominee
+  EST	 -05:00
+  LMT	 -06:09
+  CWT	 -05:00
+  CST	 -06:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Merida
+  LMT	 -06:01
+  CDT	 -05:00
+  CST	 -06:00
+  EST	 -05:00
+America/Mexico_City
+  LMT	 -07:23
+  CDT	 -05:00
+  MST	 -07:00
+  CWT	 -05:00
+  CST	 -06:00
+America/Miquelon
+  LMT	 -04:15
+  PMDT	 -02:00
+  AST	 -04:00
+  PMST	 -03:00
+America/Moncton
+  APT	 -03:00
+  LMT	 -05:40
+  ADT	 -03:00
+  EST	 -05:00
+  AWT	 -03:00
+  AST	 -04:00
+America/Monterrey
+  LMT	 -07:18
+  CST	 -06:00
+  CDT	 -05:00
+America/Montevideo
+  UYT	 -03:00
+  LMT	 -04:15
+  UYHST	 -03:00
+  MMT	 -04:15
+  UYHST	 -03:30
+  UYST	 -02:00
+  UYT	 -04:30
+America/Montreal
+  LMT	 -05:05
+  EWT	 -04:00
+  EST	 -05:00
+  EPT	 -04:00
+  EDT	 -04:00
+America/Montserrat
+  LMT	 -05:51
+  AST	 -04:00
+America/Nassau
+  LMT	 -06:50
+  EST	 -05:00
+  EDT	 -04:00
+America/New_York
+  LMT	 -05:03
+  EWT	 -04:00
+  EST	 -05:00
+  EPT	 -04:00
+  EDT	 -04:00
+America/Nipigon
+  LMT	 -06:06
+  EWT	 -04:00
+  EST	 -05:00
+  EPT	 -04:00
+  EDT	 -04:00
+America/Nome
+  BST	 -11:00
+  LMT	 +12:58
+  AKST	 -09:00
+  NWT	 -10:00
+  LMT	 -12:58
+  BDT	 -10:00
+  AKDT	 -08:00
+  NPT	 -10:00
+  YST	 -09:00
+  NST	 -11:00
+America/Noronha
+  LMT	 -03:50
+  FNT	 -02:00
+  FNST	 -01:00
+America/North_Dakota/Center
+  CST	 -06:00
+  LMT	 -07:14
+  MWT	 -06:00
+  MST	 -07:00
+  CDT	 -05:00
+  MPT	 -06:00
+  MDT	 -06:00
+America/North_Dakota/New_Salem
+  CST	 -06:00
+  LMT	 -07:14
+  MWT	 -06:00
+  MST	 -07:00
+  CDT	 -05:00
+  MPT	 -06:00
+  MDT	 -06:00
+America/Panama
+  LMT	 -06:41
+  CMT	 -06:40
+  EST	 -05:00
+America/Pangnirtung
+  ADT	 -03:00
+  zzz	 +00:00
+  CST	 -06:00
+  APT	 -03:00
+  AST	 -04:00
+  EDT	 -04:00
+  CDT	 -05:00
+  ADDT	 -02:00
+  EST	 -05:00
+  AWT	 -03:00
+America/Paramaribo
+  SRT	 -03:00
+  LMT	 -04:19
+  NEGT	 -04:30
+  PMT	 -04:19
+  SRT	 -04:30
+  PMT	 -04:19
+America/Phoenix
+  LMT	 -08:31
+  MWT	 -06:00
+  MST	 -07:00
+  MDT	 -06:00
+America/Port-au-Prince
+  LMT	 -05:10
+  EDT	 -04:00
+  PPMT	 -05:11
+  EST	 -05:00
+America/Port_of_Spain
+  LMT	 -05:53
+  AST	 -04:00
+America/Porto_Acre
+America/Porto_Velho
+  LMT	 -05:44
+  AMT	 -04:00
+  AMST	 -03:00
+America/Puerto_Rico
+  LMT	 -05:35
+  APT	 -03:00
+  AST	 -04:00
+  AWT	 -03:00
+America/Rainy_River
+  LMT	 -07:41
+  CWT	 -05:00
+  CST	 -06:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Rankin_Inlet
+  zzz	 +00:00
+  CDT	 -05:00
+  CST	 -06:00
+  EST	 -05:00
+  CDDT	 -04:00
+America/Recife
+  LMT	 -03:40
+  BRT	 -03:00
+  BRST	 -02:00
+America/Regina
+  CST	 -06:00
+  LMT	 -07:01
+  MWT	 -06:00
+  MST	 -07:00
+  MPT	 -06:00
+  MDT	 -06:00
+America/Resolute
+  zzz	 +00:00
+  CDT	 -05:00
+  CST	 -06:00
+  EST	 -05:00
+  CDDT	 -04:00
+America/Rio_Branco
+  LMT	 -05:28
+  ACT	 -05:00
+  ACST	 -04:00
+America/Rosario
+America/Santiago
+  CLST	 -03:00
+  LMT	 -05:17
+  CLT	 -04:00
+  SMT	 -05:17
+  CLST	 -04:00
+  CLT	 -05:00
+America/Santo_Domingo
+  AST	 -04:00
+  LMT	 -05:20
+  EDT	 -04:00
+  SDMT	 -05:20
+  EHDT	 -05:30
+  EST	 -05:00
+America/Sao_Paulo
+  LMT	 -04:53
+  BRT	 -03:00
+  BRST	 -02:00
+America/Scoresbysund
+  LMT	 -02:32
+  EGST	 +00:00
+  CGT	 -02:00
+  EGT	 -01:00
+  CGST	 -01:00
+America/Shiprock
+America/St_Johns
+  NWT	 -03:30
+  LMT	 -04:29
+  NST	 -04:30
+  NST	 -04:29
+  NPT	 -03:30
+  NDT	 -03:30
+  NDDT	 -02:30
+  NDT	 -03:29
+America/St_Kitts
+  LMT	 -05:49
+  AST	 -04:00
+America/St_Lucia
+  LMT	 -05:56
+  CMT	 -05:56
+  AST	 -04:00
+America/St_Thomas
+  LMT	 -05:40
+  AST	 -04:00
+America/St_Vincent
+  LMT	 -05:55
+  KMT	 -05:55
+  AST	 -04:00
+America/Swift_Current
+  CST	 -06:00
+  LMT	 -08:48
+  MWT	 -06:00
+  MST	 -07:00
+  MPT	 -06:00
+  MDT	 -06:00
+America/Tegucigalpa
+  LMT	 -06:11
+  CST	 -06:00
+  CDT	 -05:00
+America/Thule
+  LMT	 -05:24
+  AST	 -04:00
+  ADT	 -03:00
+America/Thunder_Bay
+  EDT	 -04:00
+  LMT	 -06:03
+  EWT	 -04:00
+  CST	 -06:00
+  EPT	 -04:00
+  EST	 -05:00
+America/Tijuana
+  PPT	 -07:00
+  LMT	 -08:11
+  PDT	 -07:00
+  MST	 -07:00
+  PWT	 -07:00
+  PST	 -08:00
+America/Toronto
+  LMT	 -06:42
+  EWT	 -04:00
+  EST	 -05:00
+  EPT	 -04:00
+  EDT	 -04:00
+America/Tortola
+  LMT	 -05:41
+  AST	 -04:00
+America/Vancouver
+  LMT	 -09:47
+  PWT	 -07:00
+  PST	 -08:00
+  PPT	 -07:00
+  PDT	 -07:00
+America/Virgin
+America/Whitehorse
+  YDDT	 -07:00
+  LMT	 -10:59
+  YWT	 -08:00
+  YST	 -09:00
+  PST	 -08:00
+  YPT	 -08:00
+  PDT	 -07:00
+  YDT	 -08:00
+America/Winnipeg
+  LMT	 -07:31
+  CWT	 -05:00
+  CST	 -06:00
+  CPT	 -05:00
+  CDT	 -05:00
+America/Yakutat
+  YDT	 -08:00
+  LMT	 +14:41
+  YWT	 -08:00
+  LMT	 -10:41
+  AKST	 -09:00
+  YPT	 -08:00
+  AKDT	 -08:00
+  YST	 -09:00
+America/Yellowknife
+  MDT	 -06:00
+  zzz	 +00:00
+  MPT	 -06:00
+  MST	 -07:00
+  MDDT	 -05:00
+  MWT	 -06:00
+Antarctica/Casey
+  zzz	 +00:00
+  WST	 +08:00
+Antarctica/Davis
+  zzz	 +00:00
+  DAVT	 +07:00
+Antarctica/DumontDUrville
+  zzz	 +00:00
+  PMT	 +10:00
+  DDUT	 +10:00
+Antarctica/Mawson
+  zzz	 +00:00
+  MAWT	 +06:00
+Antarctica/McMurdo
+  zzz	 +00:00
+  NZST	 +12:00
+  NZDT	 +13:00
+Antarctica/Palmer
+  CLT	 -04:00
+  zzz	 +00:00
+  ART	 -03:00
+  ARST	 -03:00
+  CLST	 -03:00
+  ARST	 -02:00
+  ART	 -04:00
+Antarctica/Rothera
+  zzz	 +00:00
+  ROTT	 -03:00
+Antarctica/South_Pole
+Antarctica/Syowa
+  zzz	 +00:00
+  SYOT	 +03:00
+Antarctica/Vostok
+  zzz	 +00:00
+  VOST	 +06:00
+Arctic/Longyearbyen
+Asia/Aden
+  LMT	 +03:00
+  AST	 +03:00
+Asia/Almaty
+  LMT	 +05:07
+  ALMST	 +07:00
+  ALMT	 +05:00
+  ALMT	 +06:00
+Asia/Amman
+  LMT	 +02:23
+  EET	 +02:00
+  EEST	 +03:00
+Asia/Anadyr
+  ANAST	 +12:00
+  LMT	 +11:49
+  ANAST	 +14:00
+  ANAT	 +12:00
+  ANAT	 +11:00
+  ANAST	 +13:00
+  ANAT	 +13:00
+Asia/Aqtau
+  SHEST	 +06:00
+  LMT	 +03:21
+  AQTST	 +05:00
+  SHET	 +05:00
+  FORT	 +04:00
+  AQTT	 +05:00
+  AQTT	 +04:00
+  SHET	 +06:00
+  AQTST	 +06:00
+  FORT	 +05:00
+Asia/Aqtobe
+  AQTT	 +05:00
+  LMT	 +03:48
+  AKTST	 +06:00
+  AKTT	 +04:00
+  AQTST	 +06:00
+  AKTT	 +06:00
+  AKTT	 +05:00
+Asia/Ashgabat
+  TMT	 +04:00
+  LMT	 +03:53
+  ASHST	 +06:00
+  ASHT	 +04:00
+  TMT	 +05:00
+  ASHST	 +05:00
+  ASHT	 +05:00
+Asia/Ashkhabad
+Asia/Baghdad
+  LMT	 +02:57
+  ADT	 +04:00
+  BMT	 +02:57
+  AST	 +03:00
+Asia/Bahrain
+  LMT	 +03:22
+  GST	 +04:00
+  AST	 +03:00
+Asia/Baku
+  AZST	 +04:00
+  LMT	 +03:19
+  AZST	 +05:00
+  BAKST	 +05:00
+  BAKT	 +03:00
+  AZT	 +03:00
+  BAKST	 +04:00
+  AZT	 +04:00
+  BAKT	 +04:00
+Asia/Bangkok
+  LMT	 +06:42
+  BMT	 +06:42
+  ICT	 +07:00
+Asia/Beirut
+  LMT	 +02:22
+  EET	 +02:00
+  EEST	 +03:00
+Asia/Bishkek
+  KGT	 +05:00
+  LMT	 +04:58
+  FRUST	 +07:00
+  FRUT	 +05:00
+  KGST	 +06:00
+  FRUST	 +06:00
+  KGT	 +06:00
+  FRUT	 +06:00
+Asia/Brunei
+  LMT	 +07:39
+  BNT	 +07:30
+  BNT	 +08:00
+Asia/Calcutta
+  LMT	 +05:53
+  IST	 +05:30
+  HMT	 +05:53
+  IST	 +06:30
+  BURT	 +06:30
+Asia/Choibalsan
+  LMT	 +07:38
+  CHOST	 +10:00
+  ULAT	 +07:00
+  CHOT	 +09:00
+  ULAT	 +08:00
+Asia/Chongqing
+  LMT	 +07:06
+  CDT	 +09:00
+  LONT	 +07:00
+  CST	 +08:00
+Asia/Chungking
+Asia/Colombo
+  LKT	 +06:30
+  LMT	 +05:19
+  IHST	 +06:00
+  MMT	 +05:19
+  LKT	 +06:00
+  IST	 +06:30
+  IST	 +05:30
+Asia/Dacca
+Asia/Damascus
+  LMT	 +02:25
+  EET	 +02:00
+  EEST	 +03:00
+Asia/Dhaka
+  BDT	 +06:00
+  LMT	 +06:01
+  IST	 +05:30
+  HMT	 +05:53
+  DACT	 +06:00
+  BURT	 +06:30
+Asia/Dili
+  LMT	 +08:22
+  TLT	 +09:00
+  TLT	 +08:00
+  CIT	 +08:00
+  JST	 +09:00
+Asia/Dubai
+  LMT	 +03:41
+  GST	 +04:00
+Asia/Dushanbe
+  TJT	 +05:00
+  LMT	 +04:35
+  DUSST	 +07:00
+  DUST	 +05:00
+  DUSST	 +06:00
+  DUST	 +06:00
+Asia/Gaza
+  IDT	 +03:00
+  LMT	 +02:17
+  EEST	 +03:00
+  EET	 +02:00
+  IST	 +02:00
+  EET	 +03:00
+Asia/Harbin
+  LMT	 +08:26
+  CHAT	 +09:00
+  CHAT	 +08:30
+  CDT	 +09:00
+  CST	 +08:00
+Asia/Hong_Kong
+  LMT	 +07:36
+  HKT	 +08:00
+  HKST	 +09:00
+Asia/Hovd
+  LMT	 +06:06
+  HOVST	 +08:00
+  HOVT	 +06:00
+  HOVT	 +07:00
+Asia/Irkutsk
+  IRKST	 +08:00
+  LMT	 +06:57
+  IRKT	 +08:00
+  IMT	 +06:57
+  IRKST	 +09:00
+  IRKT	 +07:00
+Asia/Istanbul
+Asia/Jakarta
+  WIT	 +08:00
+  LMT	 +07:07
+  WIT	 +07:30
+  JMT	 +07:07
+  WIT	 +07:00
+  JST	 +09:00
+  JAVT	 +07:20
+Asia/Jayapura
+  LMT	 +09:22
+  EIT	 +09:00
+  CST	 +09:30
+Asia/Jerusalem
+  LMT	 +02:20
+  IDT	 +03:00
+  JMT	 +02:20
+  IDDT	 +04:00
+  IST	 +02:00
+Asia/Kabul
+  LMT	 +04:36
+  AFT	 +04:00
+  AFT	 +04:30
+Asia/Kamchatka
+  LMT	 +10:34
+  PETST	 +13:00
+  PETT	 +11:00
+  PETST	 +12:00
+  PETT	 +12:00
+Asia/Karachi
+  PKST	 +06:00
+  LMT	 +04:28
+  KART	 +05:00
+  IST	 +05:30
+  PKT	 +05:00
+  IST	 +06:30
+Asia/Kashgar
+  LMT	 +05:03
+  CST	 +08:00
+  KAST	 +05:30
+  CDT	 +09:00
+  KAST	 +05:00
+Asia/Katmandu
+  LMT	 +05:41
+  IST	 +05:30
+  NPT	 +05:45
+Asia/Krasnoyarsk
+  LMT	 +06:11
+  KRAST	 +08:00
+  KRAT	 +06:00
+  KRAST	 +07:00
+  KRAT	 +07:00
+Asia/Kuala_Lumpur
+  MALT	 +07:30
+  LMT	 +06:46
+  MALST	 +07:20
+  SMT	 +06:55
+  JST	 +09:00
+  MALT	 +07:20
+  MYT	 +08:00
+  MALT	 +07:00
+Asia/Kuching
+  MYT	 +08:00
+  LMT	 +07:21
+  BORTST	 +08:20
+  BORT	 +07:30
+  JST	 +09:00
+  BORT	 +08:00
+Asia/Kuwait
+  LMT	 +03:11
+  AST	 +03:00
+Asia/Macao
+Asia/Macau
+  LMT	 +07:34
+  CST	 +08:00
+  MOT	 +08:00
+  MOST	 +09:00
+Asia/Magadan
+  LMT	 +10:03
+  MAGST	 +12:00
+  MAGT	 +10:00
+  MAGST	 +11:00
+  MAGT	 +11:00
+Asia/Makassar
+  LMT	 +07:57
+  JST	 +09:00
+  MMT	 +07:57
+  CIT	 +08:00
+Asia/Manila
+  LMT	 -16:04
+  PHST	 +09:00
+  LMT	 +08:04
+  JST	 +09:00
+  PHT	 +08:00
+Asia/Muscat
+  LMT	 +03:54
+  GST	 +04:00
+Asia/Nicosia
+  LMT	 +02:13
+  EET	 +02:00
+  EEST	 +03:00
+Asia/Novosibirsk
+  LMT	 +05:31
+  NOVST	 +08:00
+  NOVT	 +06:00
+  NOVST	 +07:00
+  NOVT	 +07:00
+Asia/Omsk
+  LMT	 +04:53
+  OMSST	 +07:00
+  OMST	 +05:00
+  OMSST	 +06:00
+  OMST	 +06:00
+Asia/Oral
+  URAST	 +05:00
+  LMT	 +03:25
+  ORAT	 +05:00
+  URAST	 +06:00
+  URAT	 +04:00
+  ORAT	 +04:00
+  URAT	 +06:00
+  ORAST	 +05:00
+  URAT	 +05:00
+Asia/Phnom_Penh
+  LMT	 +06:59
+  ICT	 +08:00
+  SMT	 +07:06
+  ICT	 +07:00
+Asia/Pontianak
+  CIT	 +08:00
+  LMT	 +07:17
+  JST	 +09:00
+  PMT	 +07:17
+  WIT	 +07:00
+  WIT	 +08:00
+  WIT	 +07:30
+Asia/Pyongyang
+  LMT	 +08:23
+  KST	 +08:00
+  KST	 +08:30
+  KST	 +09:00
+Asia/Qatar
+  LMT	 +03:26
+  GST	 +04:00
+  AST	 +03:00
+Asia/Qyzylorda
+  QYZT	 +05:00
+  LMT	 +04:21
+  KIZST	 +06:00
+  KIZT	 +04:00
+  QYZT	 +06:00
+  KIZT	 +06:00
+  QYZST	 +07:00
+  KIZT	 +05:00
+Asia/Rangoon
+  LMT	 +06:24
+  JST	 +09:00
+  RMT	 +06:24
+  MMT	 +06:30
+  BURT	 +06:30
+Asia/Riyadh
+  LMT	 +03:06
+  AST	 +03:00
+Asia/Riyadh87
+  zzz	 +03:04
+  zzz	 +03:22
+  zzz	 +03:00
+  zzz	 +03:14
+  zzz	 +03:08
+  zzz	 +03:10
+  zzz	 +02:54
+  zzz	 +03:20
+  zzz	 +02:58
+  zzz	 +03:06
+  zzz	 +03:18
+  zzz	 +03:05
+  zzz	 +02:55
+  zzz	 +03:07
+  zzz	 +03:02
+  zzz	 +03:08
+  zzz	 +03:18
+  zzz	 +02:55
+  zzz	 +03:22
+  zzz	 +03:05
+  zzz	 +03:00
+  zzz	 +02:58
+  zzz	 +03:16
+  zzz	 +02:54
+  zzz	 +03:10
+  zzz	 +03:01
+  zzz	 +03:23
+  zzz	 +03:03
+  zzz	 +03:09
+  zzz	 +03:10
+  zzz	 +03:14
+  zzz	 +02:52
+  zzz	 +03:22
+  zzz	 +03:01
+  zzz	 +03:04
+  zzz	 +03:14
+  zzz	 +03:11
+  zzz	 +02:53
+  zzz	 +03:08
+  zzz	 +03:05
+  zzz	 +03:21
+  zzz	 +02:58
+  zzz	 +03:17
+  zzz	 +03:07
+  zzz	 +03:05
+  zzz	 +02:55
+  zzz	 +02:56
+  zzz	 +03:01
+  zzz	 +03:07
+  zzz	 +03:19
+  zzz	 +02:57
+  zzz	 +03:21
+  zzz	 +03:05
+  zzz	 +03:01
+  zzz	 +03:02
+  zzz	 +03:17
+  zzz	 +02:54
+  zzz	 +03:09
+  zzz	 +03:01
+  zzz	 +03:07
+  zzz	 +03:23
+  zzz	 +03:03
+  zzz	 +03:06
+  zzz	 +03:10
+  zzz	 +03:14
+  zzz	 +02:52
+  zzz	 +03:22
+  zzz	 +03:01
+  zzz	 +03:03
+  zzz	 +03:13
+  zzz	 +03:12
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:05
+  zzz	 +03:00
+  zzz	 +03:21
+  zzz	 +02:59
+  zzz	 +03:16
+  zzz	 +03:07
+  zzz	 +03:07
+  zzz	 +02:54
+  zzz	 +03:19
+  zzz	 +02:57
+  zzz	 +03:06
+  zzz	 +03:04
+  zzz	 +02:56
+  zzz	 +03:20
+  zzz	 +03:06
+  zzz	 +03:09
+  zzz	 +03:17
+  zzz	 +02:55
+  zzz	 +03:03
+  zzz	 +03:22
+  zzz	 +03:04
+  zzz	 +03:01
+  zzz	 +02:59
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:03
+  zzz	 +03:10
+  zzz	 +03:02
+  zzz	 +03:22
+  zzz	 +03:02
+  zzz	 +03:12
+  zzz	 +03:09
+  zzz	 +03:13
+  zzz	 +02:53
+  zzz	 +03:21
+  zzz	 +02:59
+  zzz	 +03:04
+  zzz	 +03:00
+  zzz	 +03:15
+  zzz	 +03:08
+  zzz	 +02:54
+  zzz	 +03:08
+  zzz	 +03:06
+  zzz	 +03:20
+  zzz	 +02:57
+  zzz	 +03:18
+  zzz	 +03:06
+  zzz	 +03:04
+  zzz	 +02:56
+  zzz	 +03:18
+  zzz	 +02:55
+  zzz	 +03:08
+  zzz	 +03:00
+  zzz	 +02:58
+  zzz	 +03:22
+  zzz	 +03:04
+  zzz	 +03:10
+  zzz	 +03:16
+  zzz	 +02:53
+  zzz	 +03:02
+  zzz	 +03:01
+  zzz	 +03:23
+  zzz	 +03:11
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:13
+  zzz	 +03:00
+  zzz	 +03:22
+  zzz	 +03:00
+  zzz	 +03:04
+  zzz	 +03:14
+  zzz	 +03:11
+  zzz	 +02:53
+  zzz	 +03:08
+  zzz	 +03:05
+  zzz	 +03:20
+  zzz	 +02:58
+  zzz	 +03:18
+  zzz	 +03:07
+  zzz	 +03:05
+  zzz	 +02:55
+  zzz	 +03:19
+  zzz	 +02:56
+  zzz	 +03:08
+  zzz	 +03:01
+  zzz	 +02:57
+  zzz	 +03:21
+  zzz	 +03:05
+  zzz	 +03:10
+  zzz	 +03:16
+  zzz	 +02:54
+  zzz	 +03:23
+  zzz	 +03:03
+  zzz	 +03:01
+  zzz	 +03:07
+  zzz	 +03:14
+  zzz	 +02:52
+  zzz	 +03:10
+  zzz	 +03:03
+  zzz	 +03:22
+  zzz	 +03:01
+  zzz	 +03:13
+  zzz	 +03:09
+  zzz	 +03:11
+  zzz	 +02:53
+  zzz	 +03:21
+  zzz	 +02:59
+  zzz	 +03:05
+  zzz	 +03:17
+  zzz	 +03:06
+  zzz	 +02:55
+  zzz	 +03:07
+  zzz	 +03:07
+  zzz	 +03:19
+  zzz	 +02:56
+  zzz	 +03:20
+  zzz	 +03:06
+  zzz	 +03:03
+  zzz	 +02:57
+  zzz	 +03:17
+  zzz	 +02:54
+  zzz	 +03:09
+  zzz	 +03:01
+  zzz	 +02:59
+  zzz	 +03:23
+  zzz	 +03:04
+  zzz	 +03:10
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:22
+  zzz	 +03:02
+  zzz	 +03:03
+  zzz	 +03:12
+  zzz	 +03:12
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:05
+  zzz	 +03:21
+  zzz	 +02:59
+  zzz	 +03:15
+  zzz	 +03:08
+  zzz	 +03:08
+  zzz	 +02:54
+  zzz	 +02:57
+  zzz	 +03:06
+  zzz	 +03:20
+  zzz	 +02:56
+  zzz	 +03:20
+  zzz	 +03:06
+  zzz	 +03:04
+  zzz	 +03:18
+  zzz	 +02:55
+  zzz	 +03:02
+  zzz	 +03:09
+  zzz	 +03:00
+  zzz	 +02:58
+  zzz	 +03:22
+  zzz	 +03:04
+  zzz	 +03:10
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:23
+  zzz	 +03:02
+  zzz	 +03:02
+  zzz	 +03:11
+  zzz	 +03:13
+  zzz	 +02:53
+  zzz	 +03:09
+Asia/Riyadh88
+  zzz	 +03:01
+  zzz	 +03:23
+  zzz	 +03:02
+  zzz	 +03:05
+  zzz	 +03:09
+  zzz	 +03:14
+  zzz	 +02:54
+  zzz	 +03:22
+  zzz	 +02:59
+  zzz	 +03:03
+  zzz	 +03:12
+  zzz	 +03:12
+  zzz	 +02:55
+  zzz	 +03:08
+  zzz	 +03:02
+  zzz	 +03:05
+  zzz	 +03:21
+  zzz	 +02:56
+  zzz	 +03:15
+  zzz	 +03:07
+  zzz	 +03:07
+  zzz	 +02:58
+  zzz	 +03:19
+  zzz	 +02:54
+  zzz	 +03:07
+  zzz	 +03:02
+  zzz	 +03:19
+  zzz	 +03:05
+  zzz	 +03:10
+  zzz	 +03:17
+  zzz	 +02:52
+  zzz	 +03:22
+  zzz	 +03:03
+  zzz	 +03:00
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:10
+  zzz	 +03:02
+  zzz	 +03:22
+  zzz	 +02:59
+  zzz	 +03:11
+  zzz	 +03:09
+  zzz	 +03:12
+  zzz	 +02:55
+  zzz	 +02:57
+  zzz	 +03:01
+  zzz	 +03:05
+  zzz	 +03:21
+  zzz	 +02:57
+  zzz	 +03:14
+  zzz	 +03:07
+  zzz	 +03:01
+  zzz	 +03:09
+  zzz	 +03:20
+  zzz	 +02:54
+  zzz	 +03:07
+  zzz	 +03:03
+  zzz	 +03:07
+  zzz	 +03:19
+  zzz	 +03:06
+  zzz	 +03:09
+  zzz	 +03:18
+  zzz	 +02:52
+  zzz	 +03:21
+  zzz	 +03:04
+  zzz	 +03:00
+  zzz	 +03:16
+  zzz	 +02:53
+  zzz	 +03:10
+  zzz	 +03:01
+  zzz	 +03:01
+  zzz	 +03:23
+  zzz	 +03:00
+  zzz	 +03:07
+  zzz	 +03:09
+  zzz	 +03:13
+  zzz	 +02:54
+  zzz	 +03:22
+  zzz	 +02:58
+  zzz	 +03:04
+  zzz	 +03:11
+  zzz	 +02:56
+  zzz	 +03:13
+  zzz	 +03:08
+  zzz	 +03:06
+  zzz	 +03:20
+  zzz	 +02:55
+  zzz	 +03:03
+  zzz	 +03:17
+  zzz	 +03:06
+  zzz	 +03:05
+  zzz	 +02:59
+  zzz	 +03:18
+  zzz	 +02:53
+  zzz	 +03:03
+  zzz	 +03:08
+  zzz	 +03:01
+  zzz	 +03:21
+  zzz	 +03:04
+  zzz	 +03:10
+  zzz	 +03:16
+  zzz	 +02:53
+  zzz	 +03:23
+  zzz	 +03:01
+  zzz	 +03:01
+  zzz	 +03:00
+  zzz	 +03:06
+  zzz	 +03:14
+  zzz	 +02:54
+  zzz	 +03:09
+  zzz	 +03:04
+  zzz	 +03:22
+  zzz	 +02:58
+  zzz	 +03:12
+  zzz	 +03:08
+  zzz	 +03:11
+  zzz	 +02:56
+  zzz	 +03:21
+  zzz	 +02:56
+  zzz	 +03:05
+  zzz	 +03:06
+  zzz	 +02:58
+  zzz	 +03:16
+  zzz	 +03:07
+  zzz	 +03:07
+  zzz	 +03:19
+  zzz	 +02:54
+  zzz	 +03:05
+  zzz	 +03:02
+  zzz	 +03:19
+  zzz	 +02:53
+  zzz	 +03:10
+  zzz	 +03:17
+  zzz	 +03:00
+  zzz	 +03:23
+  zzz	 +03:02
+  zzz	 +03:01
+  zzz	 +03:15
+  zzz	 +02:54
+  zzz	 +03:10
+  zzz	 +03:03
+  zzz	 +03:22
+  zzz	 +02:59
+  zzz	 +03:11
+  zzz	 +03:09
+  zzz	 +03:12
+  zzz	 +02:55
+  zzz	 +03:21
+  zzz	 +02:56
+  zzz	 +03:05
+  zzz	 +03:08
+  zzz	 +02:57
+  zzz	 +03:15
+  zzz	 +03:07
+  zzz	 +03:07
+  zzz	 +03:20
+  zzz	 +02:54
+  zzz	 +03:19
+  zzz	 +03:05
+  zzz	 +03:03
+  zzz	 +03:18
+  zzz	 +02:52
+  zzz	 +03:09
+  zzz	 +03:00
+  zzz	 +03:21
+  zzz	 +03:03
+  zzz	 +03:10
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:23
+  zzz	 +03:00
+  zzz	 +03:02
+  zzz	 +03:08
+  zzz	 +03:13
+  zzz	 +02:55
+  zzz	 +03:09
+  zzz	 +03:05
+  zzz	 +03:22
+  zzz	 +02:57
+  zzz	 +03:14
+  zzz	 +03:08
+  zzz	 +03:10
+  zzz	 +02:57
+  zzz	 +03:20
+  zzz	 +02:55
+  zzz	 +03:06
+  zzz	 +03:04
+  zzz	 +02:59
+  zzz	 +03:18
+  zzz	 +03:06
+  zzz	 +03:09
+  zzz	 +03:18
+  zzz	 +02:53
+  zzz	 +03:21
+  zzz	 +03:04
+  zzz	 +03:00
+  zzz	 +03:16
+  zzz	 +02:53
+  zzz	 +03:10
+  zzz	 +03:01
+  zzz	 +03:23
+  zzz	 +03:01
+  zzz	 +03:07
+  zzz	 +03:09
+  zzz	 +03:14
+  zzz	 +02:54
+  zzz	 +02:58
+  zzz	 +03:04
+  zzz	 +03:22
+  zzz	 +02:56
+  zzz	 +03:13
+  zzz	 +03:08
+  zzz	 +03:11
+  zzz	 +03:21
+  zzz	 +02:55
+  zzz	 +03:02
+  zzz	 +03:06
+  zzz	 +03:06
+  zzz	 +02:58
+  zzz	 +03:17
+  zzz	 +03:06
+  zzz	 +03:08
+  zzz	 +03:19
+  zzz	 +02:53
+  zzz	 +03:20
+  zzz	 +03:04
+  zzz	 +03:02
+  zzz	 +03:17
+  zzz	 +02:53
+  zzz	 +03:10
+Asia/Riyadh89
+  zzz	 +03:02
+  zzz	 +03:23
+  zzz	 +03:00
+  zzz	 +03:04
+  zzz	 +03:09
+  zzz	 +03:14
+  zzz	 +02:54
+  zzz	 +03:22
+  zzz	 +02:58
+  zzz	 +03:04
+  zzz	 +03:13
+  zzz	 +03:12
+  zzz	 +02:55
+  zzz	 +03:07
+  zzz	 +03:02
+  zzz	 +03:07
+  zzz	 +03:21
+  zzz	 +02:56
+  zzz	 +03:16
+  zzz	 +03:06
+  zzz	 +03:06
+  zzz	 +02:57
+  zzz	 +03:19
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:01
+  zzz	 +03:20
+  zzz	 +03:04
+  zzz	 +03:10
+  zzz	 +03:17
+  zzz	 +02:52
+  zzz	 +03:23
+  zzz	 +03:01
+  zzz	 +03:01
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:03
+  zzz	 +03:22
+  zzz	 +02:59
+  zzz	 +03:12
+  zzz	 +03:08
+  zzz	 +03:12
+  zzz	 +02:55
+  zzz	 +02:57
+  zzz	 +03:01
+  zzz	 +03:06
+  zzz	 +03:21
+  zzz	 +02:57
+  zzz	 +03:16
+  zzz	 +03:06
+  zzz	 +03:01
+  zzz	 +03:07
+  zzz	 +03:20
+  zzz	 +02:54
+  zzz	 +03:08
+  zzz	 +03:02
+  zzz	 +03:07
+  zzz	 +03:19
+  zzz	 +03:04
+  zzz	 +03:10
+  zzz	 +03:18
+  zzz	 +02:52
+  zzz	 +03:22
+  zzz	 +03:02
+  zzz	 +03:01
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:03
+  zzz	 +03:00
+  zzz	 +03:23
+  zzz	 +02:59
+  zzz	 +03:11
+  zzz	 +03:08
+  zzz	 +03:13
+  zzz	 +02:54
+  zzz	 +03:22
+  zzz	 +02:57
+  zzz	 +03:05
+  zzz	 +03:11
+  zzz	 +02:56
+  zzz	 +03:15
+  zzz	 +03:07
+  zzz	 +03:08
+  zzz	 +03:20
+  zzz	 +02:55
+  zzz	 +03:03
+  zzz	 +03:18
+  zzz	 +03:05
+  zzz	 +03:04
+  zzz	 +02:59
+  zzz	 +03:18
+  zzz	 +02:53
+  zzz	 +03:02
+  zzz	 +03:10
+  zzz	 +03:00
+  zzz	 +03:22
+  zzz	 +03:03
+  zzz	 +03:10
+  zzz	 +03:16
+  zzz	 +02:53
+  zzz	 +03:23
+  zzz	 +03:00
+  zzz	 +03:02
+  zzz	 +03:00
+  zzz	 +03:05
+  zzz	 +03:14
+  zzz	 +02:54
+  zzz	 +03:09
+  zzz	 +03:05
+  zzz	 +03:22
+  zzz	 +02:58
+  zzz	 +03:14
+  zzz	 +03:07
+  zzz	 +03:11
+  zzz	 +02:55
+  zzz	 +03:21
+  zzz	 +02:56
+  zzz	 +03:08
+  zzz	 +03:04
+  zzz	 +02:58
+  zzz	 +03:17
+  zzz	 +03:05
+  zzz	 +03:09
+  zzz	 +03:19
+  zzz	 +02:53
+  zzz	 +03:04
+  zzz	 +03:00
+  zzz	 +03:20
+  zzz	 +02:52
+  zzz	 +03:10
+  zzz	 +03:17
+  zzz	 +02:59
+  zzz	 +03:23
+  zzz	 +03:01
+  zzz	 +03:01
+  zzz	 +03:14
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:04
+  zzz	 +03:22
+  zzz	 +02:58
+  zzz	 +03:13
+  zzz	 +03:08
+  zzz	 +03:12
+  zzz	 +02:55
+  zzz	 +03:21
+  zzz	 +02:56
+  zzz	 +03:06
+  zzz	 +03:06
+  zzz	 +02:57
+  zzz	 +03:16
+  zzz	 +03:06
+  zzz	 +03:09
+  zzz	 +03:20
+  zzz	 +02:54
+  zzz	 +03:20
+  zzz	 +03:04
+  zzz	 +03:01
+  zzz	 +03:17
+  zzz	 +02:52
+  zzz	 +03:10
+  zzz	 +03:01
+  zzz	 +03:22
+  zzz	 +03:01
+  zzz	 +03:09
+  zzz	 +03:15
+  zzz	 +02:53
+  zzz	 +03:23
+  zzz	 +02:59
+  zzz	 +03:03
+  zzz	 +03:11
+  zzz	 +03:13
+  zzz	 +02:54
+  zzz	 +03:08
+  zzz	 +03:05
+  zzz	 +03:22
+  zzz	 +02:57
+  zzz	 +03:15
+  zzz	 +03:06
+  zzz	 +03:07
+  zzz	 +02:56
+  zzz	 +03:20
+  zzz	 +02:54
+  zzz	 +03:08
+  zzz	 +03:03
+  zzz	 +02:59
+  zzz	 +03:18
+  zzz	 +03:05
+  zzz	 +03:10
+  zzz	 +03:18
+  zzz	 +02:53
+  zzz	 +03:22
+  zzz	 +03:02
+  zzz	 +03:00
+  zzz	 +03:16
+  zzz	 +02:53
+  zzz	 +03:09
+  zzz	 +03:03
+  zzz	 +03:23
+  zzz	 +03:00
+  zzz	 +03:10
+  zzz	 +03:08
+  zzz	 +03:13
+  zzz	 +02:54
+  zzz	 +02:58
+  zzz	 +03:05
+  zzz	 +03:22
+  zzz	 +02:56
+  zzz	 +03:14
+  zzz	 +03:07
+  zzz	 +03:11
+  zzz	 +03:21
+  zzz	 +02:55
+  zzz	 +03:02
+  zzz	 +03:08
+  zzz	 +03:04
+  zzz	 +02:58
+  zzz	 +03:18
+  zzz	 +03:05
+  zzz	 +03:10
+  zzz	 +03:19
+  zzz	 +02:53
+  zzz	 +03:22
+  zzz	 +03:03
+  zzz	 +03:00
+  zzz	 +03:17
+  zzz	 +02:53
+  zzz	 +03:10
+Asia/Saigon
+  LMT	 +07:06
+  ICT	 +08:00
+  SMT	 +07:06
+  ICT	 +07:00
+Asia/Sakhalin
+  SAKST	 +11:00
+  LMT	 +09:30
+  SAKT	 +11:00
+  CJT	 +09:00
+  SAKT	 +10:00
+  SAKST	 +12:00
+  JST	 +09:00
+Asia/Samarkand
+  UZST	 +06:00
+  LMT	 +04:27
+  SAMST	 +06:00
+  SAMT	 +04:00
+  UZT	 +05:00
+  TAST	 +06:00
+  SAMT	 +05:00
+Asia/Seoul
+  KDT	 +10:00
+  LMT	 +08:27
+  KST	 +08:00
+  KST	 +08:30
+  KDT	 +09:00
+  KST	 +09:00
+Asia/Shanghai
+  LMT	 +08:05
+  CST	 +08:00
+  CDT	 +09:00
+Asia/Singapore
+  MALT	 +07:30
+  LMT	 +06:55
+  SGT	 +08:00
+  MALST	 +07:20
+  SMT	 +06:55
+  JST	 +09:00
+  MALT	 +07:20
+  SGT	 +07:30
+  MALT	 +07:00
+Asia/Taipei
+  LMT	 +08:06
+  CST	 +08:00
+  CDT	 +09:00
+Asia/Tashkent
+  UZST	 +06:00
+  LMT	 +04:37
+  TASST	 +07:00
+  TAST	 +05:00
+  UZT	 +05:00
+  TASST	 +06:00
+  TAST	 +06:00
+Asia/Tbilisi
+  TBIST	 +04:00
+  LMT	 +02:59
+  GET	 +04:00
+  TBIT	 +04:00
+  TBMT	 +02:59
+  GEST	 +04:00
+  GEST	 +05:00
+  TBIST	 +05:00
+  GET	 +03:00
+  TBIT	 +03:00
+Asia/Tehran
+  IRDT	 +04:30
+  LMT	 +03:25
+  IRST	 +04:00
+  TMT	 +03:25
+  IRDT	 +05:00
+  IRST	 +03:30
+Asia/Tel_Aviv
+Asia/Thimbu
+Asia/Thimphu
+  LMT	 +05:58
+  IST	 +05:30
+  BTT	 +06:00
+Asia/Tokyo
+  LMT	 +09:18
+  JDT	 +10:00
+  JST	 +09:00
+  CJT	 +09:00
+Asia/Ujung_Pandang
+Asia/Ulaanbaatar
+  LMT	 +07:07
+  ULAST	 +09:00
+  ULAT	 +07:00
+  ULAT	 +08:00
+Asia/Ulan_Bator
+Asia/Urumqi
+  LMT	 +05:50
+  CDT	 +09:00
+  URUT	 +06:00
+  CST	 +08:00
+Asia/Vientiane
+  LMT	 +06:50
+  ICT	 +08:00
+  SMT	 +07:06
+  ICT	 +07:00
+Asia/Vladivostok
+  VLAST	 +09:00
+  LMT	 +08:47
+  VLAST	 +11:00
+  VLAT	 +09:00
+  VLASST	 +10:00
+  VLAT	 +10:00
+Asia/Yakutsk
+  LMT	 +08:38
+  YAKST	 +10:00
+  YAKT	 +08:00
+  YAKST	 +09:00
+  YAKT	 +09:00
+Asia/Yekaterinburg
+  YEKT	 +05:00
+  LMT	 +04:02
+  SVEST	 +06:00
+  SVET	 +04:00
+  YEKST	 +06:00
+  SVEST	 +05:00
+  SVET	 +05:00
+Asia/Yerevan
+  AMST	 +04:00
+  LMT	 +02:58
+  AMST	 +05:00
+  YERST	 +05:00
+  YERT	 +03:00
+  AMT	 +03:00
+  YERST	 +04:00
+  AMT	 +04:00
+  YERT	 +04:00
+Atlantic/Azores
+  AZOT	 -01:00
+  LMT	 -02:17
+  AZOST	 -01:00
+  HMT	 -02:05
+  AZOST	 +00:00
+  AZOMT	 +00:00
+  WET	 +00:00
+  AZOT	 -02:00
+Atlantic/Bermuda
+  LMT	 -05:40
+  AST	 -04:00
+  ADT	 -03:00
+Atlantic/Canary
+  LMT	 -02:58
+  WEST	 +01:00
+  CANT	 -01:00
+  WET	 +00:00
+Atlantic/Cape_Verde
+  LMT	 -02:25
+  CVT	 -01:00
+  CVT	 -02:00
+  CVST	 -01:00
+Atlantic/Faeroe
+Atlantic/Faroe
+  LMT	 -01:32
+  WET	 +00:00
+  WEST	 +01:00
+Atlantic/Jan_Mayen
+Atlantic/Madeira
+  WET	 +00:00
+  LMT	 -02:52
+  MADST	 +00:00
+  FMT	 -02:52
+  WEST	 +01:00
+  MADMT	 +01:00
+  MADT	 -01:00
+Atlantic/Reykjavik
+  LMT	 -02:32
+  ISST	 +00:00
+  RMT	 -02:32
+  GMT	 +00:00
+  IST	 -01:00
+Atlantic/South_Georgia
+  LMT	 -03:33
+  GST	 -02:00
+Atlantic/St_Helena
+  LMT	 -01:37
+  JMT	 -01:37
+  GMT	 +00:00
+Atlantic/Stanley
+  FKST	 -02:00
+  LMT	 -04:08
+  FKST	 -03:00
+  SMT	 -04:08
+  FKT	 -03:00
+  FKT	 -04:00
+Australia/ACT
+Australia/Adelaide
+  LMT	 +09:14
+  CST	 +10:30
+  CST	 +09:00
+  CST	 +09:30
+Australia/Brisbane
+  LMT	 +10:12
+  EST	 +10:00
+  EST	 +11:00
+Australia/Broken_Hill
+  LMT	 +09:25
+  CST	 +09:30
+  EST	 +10:00
+  CST	 +10:30
+  CST	 +09:00
+Australia/Canberra
+Australia/Currie
+  LMT	 +09:35
+  EST	 +10:00
+  EST	 +11:00
+Australia/Darwin
+  LMT	 +08:43
+  CST	 +10:30
+  CST	 +09:00
+  CST	 +09:30
+Australia/Eucla
+  LMT	 +08:35
+  CWST	 +08:45
+  CWST	 +09:45
+Australia/Hobart
+  LMT	 +09:49
+  EST	 +10:00
+  EST	 +11:00
+Australia/LHI
+Australia/Lindeman
+  LMT	 +09:55
+  EST	 +10:00
+  EST	 +11:00
+Australia/Lord_Howe
+  LMT	 +10:36
+  LHST	 +11:30
+  EST	 +10:00
+  LHST	 +11:00
+  LHST	 +10:30
+Australia/Melbourne
+  LMT	 +09:39
+  EST	 +10:00
+  EST	 +11:00
+Australia/NSW
+Australia/North
+Australia/Perth
+  LMT	 +07:43
+  WST	 +08:00
+  WST	 +09:00
+Australia/Queensland
+Australia/South
+Australia/Sydney
+  LMT	 +10:04
+  EST	 +10:00
+  EST	 +11:00
+Australia/Tasmania
+Australia/Victoria
+Australia/West
+Australia/Yancowinna
+Brazil/Acre
+Brazil/DeNoronha
+Brazil/East
+Brazil/West
+CET
+  CET	 +01:00
+  CEST	 +02:00
+CST6CDT
+  CST	 -06:00
+  CPT	 -05:00
+  CDT	 -05:00
+  CWT	 -05:00
+Canada/Atlantic
+Canada/Central
+Canada/East-Saskatchewan
+Canada/Eastern
+Canada/Mountain
+Canada/Newfoundland
+Canada/Pacific
+Canada/Saskatchewan
+Canada/Yukon
+Chile/Continental
+Chile/EasterIsland
+Cuba
+EET
+  EET	 +02:00
+  EEST	 +03:00
+EST
+  EST	 -05:00
+EST5EDT
+  EST	 -05:00
+  EPT	 -04:00
+  EDT	 -04:00
+  EWT	 -04:00
+Egypt
+Eire
+Etc/GMT
+  GMT	 +00:00
+Etc/GMT+0
+Etc/GMT+1
+  GMT+1	 -01:00
+Etc/GMT+10
+  GMT+10	 -10:00
+Etc/GMT+11
+  GMT+11	 -11:00
+Etc/GMT+12
+  GMT+12	 -12:00
+Etc/GMT+2
+  GMT+2	 -02:00
+Etc/GMT+3
+  GMT+3	 -03:00
+Etc/GMT+4
+  GMT+4	 -04:00
+Etc/GMT+5
+  GMT+5	 -05:00
+Etc/GMT+6
+  GMT+6	 -06:00
+Etc/GMT+7
+  GMT+7	 -07:00
+Etc/GMT+8
+  GMT+8	 -08:00
+Etc/GMT+9
+  GMT+9	 -09:00
+Etc/GMT-0
+Etc/GMT-1
+  GMT-1	 +01:00
+Etc/GMT-10
+  GMT-10	 +10:00
+Etc/GMT-11
+  GMT-11	 +11:00
+Etc/GMT-12
+  GMT-12	 +12:00
+Etc/GMT-13
+  GMT-13	 +13:00
+Etc/GMT-14
+  GMT-14	 +14:00
+Etc/GMT-2
+  GMT-2	 +02:00
+Etc/GMT-3
+  GMT-3	 +03:00
+Etc/GMT-4
+  GMT-4	 +04:00
+Etc/GMT-5
+  GMT-5	 +05:00
+Etc/GMT-6
+  GMT-6	 +06:00
+Etc/GMT-7
+  GMT-7	 +07:00
+Etc/GMT-8
+  GMT-8	 +08:00
+Etc/GMT-9
+  GMT-9	 +09:00
+Etc/GMT0
+Etc/Greenwich
+Etc/UCT
+  UCT	 +00:00
+Etc/UTC
+  UTC	 +00:00
+Etc/Universal
+Etc/Zulu
+Europe/Amsterdam
+  CEST	 +02:00
+  LMT	 +00:19
+  NEST	 +01:20
+  AMT	 +00:19
+  CET	 +01:00
+  NET	 +00:20
+  NST	 +01:19
+Europe/Andorra
+  LMT	 +00:06
+  CEST	 +02:00
+  WET	 +00:00
+  CET	 +01:00
+Europe/Athens
+  CET	 +01:00
+  LMT	 +01:34
+  EEST	 +03:00
+  AMT	 +01:34
+  CEST	 +02:00
+  EET	 +02:00
+Europe/Belfast
+Europe/Belgrade
+  LMT	 +01:22
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Berlin
+  LMT	 +00:53
+  CEMT	 +03:00
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Bratislava
+Europe/Brussels
+  WEST	 +01:00
+  LMT	 +00:17
+  CET	 +01:00
+  BMT	 +00:17
+  CEST	 +02:00
+  WET	 +00:00
+Europe/Bucharest
+  LMT	 +01:44
+  EEST	 +03:00
+  BMT	 +01:44
+  EET	 +02:00
+Europe/Budapest
+  LMT	 +01:16
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Chisinau
+  CEST	 +02:00
+  LMT	 +01:55
+  MSD	 +04:00
+  EET	 +02:00
+  CMT	 +01:55
+  CET	 +01:00
+  EEST	 +03:00
+  MSK	 +03:00
+  BMT	 +01:44
+Europe/Copenhagen
+  LMT	 +00:50
+  CEST	 +02:00
+  CMT	 +00:50
+  CET	 +01:00
+Europe/Dublin
+  IST	 +01:00
+  LMT	 -01:35
+  GMT	 +00:00
+  DMT	 -01:34
+  IST	 +01:00
+  BST	 +01:00
+  IST	 +00:34
+Europe/Gibraltar
+  CEST	 +02:00
+  LMT	 -01:38
+  BDST	 +02:00
+  GMT	 +00:00
+  CET	 +01:00
+  BST	 +01:00
+Europe/Guernsey
+Europe/Helsinki
+  LMT	 +01:39
+  EEST	 +03:00
+  HMT	 +01:39
+  EET	 +02:00
+Europe/Isle_of_Man
+Europe/Istanbul
+  TRT	 +03:00
+  LMT	 +01:55
+  EEST	 +03:00
+  IMT	 +01:56
+  TRST	 +04:00
+  EET	 +02:00
+Europe/Jersey
+Europe/Kaliningrad
+  MSK	 +03:00
+  LMT	 +01:22
+  EET	 +02:00
+  CET	 +02:00
+  CET	 +01:00
+  MSD	 +04:00
+  CEST	 +03:00
+  EEST	 +03:00
+  CEST	 +02:00
+Europe/Kiev
+  CET	 +01:00
+  LMT	 +02:02
+  MSK	 +03:00
+  KMT	 +02:02
+  MSD	 +04:00
+  CEST	 +02:00
+  EEST	 +03:00
+  EET	 +02:00
+Europe/Lisbon
+  CEST	 +02:00
+  LMT	 -01:23
+  WEMT	 +02:00
+  WET	 +00:00
+  CET	 +01:00
+  WEST	 +01:00
+Europe/Ljubljana
+Europe/London
+  LMT	 -01:58
+  BDST	 +02:00
+  GMT	 +00:00
+  BST	 +01:00
+  BST	 +01:00
+Europe/Luxembourg
+  WEST	 +02:00
+  LMT	 +00:24
+  WET	 +00:00
+  CET	 +01:00
+  WET	 +01:00
+  WEST	 +01:00
+  CEST	 +02:00
+Europe/Madrid
+  CEST	 +02:00
+  LMT	 -01:45
+  WEMT	 +02:00
+  WET	 +00:00
+  CET	 +01:00
+  WEST	 +01:00
+Europe/Malta
+  LMT	 +00:58
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Mariehamn
+Europe/Minsk
+  CET	 +01:00
+  LMT	 +01:50
+  MSK	 +03:00
+  MMT	 +01:50
+  MSD	 +04:00
+  CEST	 +02:00
+  EEST	 +03:00
+  EET	 +02:00
+Europe/Monaco
+  CET	 +01:00
+  LMT	 +00:29
+  WEST	 +01:00
+  PMT	 +00:09
+  CEST	 +02:00
+  WEMT	 +02:00
+  WET	 +00:00
+Europe/Moscow
+  MSD	 +04:00
+  LMT	 +02:30
+  EET	 +02:00
+  MST	 +03:30
+  MMT	 +02:30
+  MSK	 +03:00
+  EEST	 +03:00
+  MDST	 +04:30
+  MSD	 +05:00
+  MMT	 +02:30
+Europe/Nicosia
+Europe/Oslo
+  LMT	 +00:43
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Paris
+  CET	 +01:00
+  LMT	 +00:09
+  WEST	 +01:00
+  PMT	 +00:09
+  WEMT	 +02:00
+  CEST	 +02:00
+  WET	 +00:00
+Europe/Podgorica
+Europe/Prague
+  LMT	 +00:57
+  CEST	 +02:00
+  PMT	 +00:57
+  CET	 +01:00
+Europe/Riga
+  CEST	 +02:00
+  LMT	 +01:36
+  EEST	 +03:00
+  EET	 +02:00
+  RMT	 +01:36
+  CET	 +01:00
+  MSK	 +03:00
+  MSD	 +04:00
+  LST	 +02:36
+Europe/Rome
+  LMT	 +00:49
+  CEST	 +02:00
+  RMT	 +00:49
+  CET	 +01:00
+Europe/Samara
+  KUYST	 +04:00
+  LMT	 +03:20
+  SAMST	 +05:00
+  KUYT	 +04:00
+  SAMT	 +03:00
+  KUYT	 +03:00
+  KUYST	 +05:00
+  KUYST	 +03:00
+  SAMT	 +04:00
+Europe/San_Marino
+Europe/Sarajevo
+Europe/Simferopol
+  CET	 +01:00
+  LMT	 +02:16
+  MSK	 +03:00
+  SMT	 +02:16
+  MSD	 +04:00
+  CEST	 +02:00
+  EEST	 +03:00
+  EET	 +02:00
+Europe/Skopje
+Europe/Sofia
+  EEST	 +03:00
+  LMT	 +01:33
+  CET	 +01:00
+  IMT	 +01:56
+  CEST	 +02:00
+  EET	 +02:00
+Europe/Stockholm
+  LMT	 +01:12
+  CEST	 +02:00
+  SET	 +01:00
+  CET	 +01:00
+Europe/Tallinn
+  MSK	 +03:00
+  LMT	 +01:39
+  CEST	 +02:00
+  TMT	 +01:39
+  MSD	 +04:00
+  EET	 +02:00
+  EEST	 +03:00
+  CET	 +01:00
+Europe/Tirane
+  LMT	 +01:19
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Tiraspol
+Europe/Uzhgorod
+  EET	 +02:00
+  LMT	 +01:29
+  MSK	 +03:00
+  CET	 +01:00
+  EEST	 +03:00
+  MSD	 +04:00
+  CEST	 +02:00
+Europe/Vaduz
+  LMT	 +00:38
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Vatican
+Europe/Vienna
+  LMT	 +01:05
+  CET	 +01:00
+  CEST	 +02:00
+Europe/Vilnius
+  MSK	 +03:00
+  LMT	 +01:41
+  EEST	 +03:00
+  CET	 +01:00
+  WMT	 +01:24
+  CEST	 +02:00
+  EET	 +02:00
+  MSD	 +04:00
+  KMT	 +01:35
+Europe/Volgograd
+  VOLST	 +05:00
+  LMT	 +02:57
+  STAT	 +04:00
+  TSAT	 +03:00
+  VOLST	 +04:00
+  VOLT	 +04:00
+  VOLT	 +03:00
+  STAT	 +03:00
+Europe/Warsaw
+  EEST	 +03:00
+  LMT	 +01:24
+  CEST	 +02:00
+  WMT	 +01:24
+  EET	 +02:00
+  CET	 +01:00
+Europe/Zagreb
+Europe/Zaporozhye
+  CET	 +01:00
+  LMT	 +02:20
+  MSK	 +03:00
+  CUT	 +02:20
+  MSD	 +04:00
+  CEST	 +02:00
+  EEST	 +03:00
+  EET	 +02:00
+Europe/Zurich
+  LMT	 +00:34
+  CEST	 +02:00
+  BMT	 +00:29
+  CET	 +01:00
+GB
+GB-Eire
+GMT
+GMT+0
+GMT-0
+GMT0
+Greenwich
+HST
+  HST	 -10:00
+Hongkong
+Iceland
+Indian/Antananarivo
+  LMT	 +03:10
+  EAT	 +03:00
+  EAST	 +04:00
+Indian/Chagos
+  LMT	 +04:49
+  IOT	 +05:00
+  IOT	 +06:00
+Indian/Christmas
+  LMT	 +07:02
+  CXT	 +07:00
+Indian/Cocos
+  LMT	 +06:27
+  CCT	 +06:30
+Indian/Comoro
+  LMT	 +02:53
+  EAT	 +03:00
+Indian/Kerguelen
+  zzz	 +00:00
+  TFT	 +05:00
+Indian/Mahe
+  LMT	 +03:41
+  SCT	 +04:00
+Indian/Maldives
+  LMT	 +04:54
+  MMT	 +04:54
+  MVT	 +05:00
+Indian/Mauritius
+  LMT	 +03:50
+  MUT	 +04:00
+Indian/Mayotte
+  LMT	 +03:00
+  EAT	 +03:00
+Indian/Reunion
+  LMT	 +03:41
+  RET	 +04:00
+Iran
+Israel
+Jamaica
+Japan
+Kwajalein
+Libya
+MET
+  MET	 +01:00
+  MEST	 +02:00
+MST
+  MST	 -07:00
+MST7MDT
+  MST	 -07:00
+  MPT	 -06:00
+  MDT	 -06:00
+  MWT	 -06:00
+Mexico/BajaNorte
+Mexico/BajaSur
+Mexico/General
+Mideast/Riyadh87
+Mideast/Riyadh88
+Mideast/Riyadh89
+NZ
+NZ-CHAT
+Navajo
+PRC
+PST8PDT
+  PST	 -08:00
+  PPT	 -07:00
+  PDT	 -07:00
+  PWT	 -07:00
+Pacific/Apia
+  LMT	 +12:33
+  WST	 -11:00
+  LMT	 -12:33
+  SAMT	 -12:30
+Pacific/Auckland
+  NZDT	 +13:00
+  LMT	 +11:39
+  NZST	 +12:00
+  NZMT	 +11:30
+  NZST	 +12:00
+  NZST	 +12:30
+Pacific/Chatham
+  LMT	 +12:13
+  CHAST	 +12:45
+  CHADT	 +13:45
+Pacific/Easter
+  EASST	 -05:00
+  LMT	 -08:42
+  EAST	 -07:00
+  EMT	 -08:42
+  EAST	 -06:00
+  EASST	 -06:00
+Pacific/Efate
+  LMT	 +11:13
+  VUT	 +11:00
+  VUST	 +12:00
+Pacific/Enderbury
+  LMT	 -12:35
+  PHOT	 +13:00
+  PHOT	 -12:00
+  PHOT	 -11:00
+Pacific/Fakaofo
+  LMT	 -12:35
+  TKT	 -10:00
+Pacific/Fiji
+  LMT	 +11:53
+  FJT	 +12:00
+  FJST	 +13:00
+Pacific/Funafuti
+  LMT	 +11:56
+  TVT	 +12:00
+Pacific/Galapagos
+  LMT	 -06:01
+  ECT	 -05:00
+  GALT	 -06:00
+Pacific/Gambier
+  LMT	 -09:00
+  GAMT	 -09:00
+Pacific/Guadalcanal
+  LMT	 +10:39
+  SBT	 +11:00
+Pacific/Guam
+  LMT	 -15:39
+  ChST	 +10:00
+  LMT	 +09:39
+  GST	 +10:00
+Pacific/Honolulu
+  HST	 -10:00
+  LMT	 -11:28
+  HWT	 -10:30
+  HST	 -11:30
+  HPT	 -10:30
+  HDT	 -10:30
+Pacific/Johnston
+  HST	 -10:00
+Pacific/Kiritimati
+  LMT	 -11:30
+  LINT	 +14:00
+  LINT	 -11:20
+  LINT	 -10:00
+Pacific/Kosrae
+  LMT	 +10:51
+  KOST	 +11:00
+  KOST	 +12:00
+Pacific/Kwajalein
+  LMT	 +11:09
+  MHT	 +12:00
+  MHT	 +11:00
+  KWAT	 -12:00
+Pacific/Majuro
+  LMT	 +11:24
+  MHT	 +11:00
+  MHT	 +12:00
+Pacific/Marquesas
+  LMT	 -10:42
+  MART	 -10:30
+Pacific/Midway
+  LMT	 -12:10
+  BST	 -11:00
+  NST	 -11:00
+  SST	 -11:00
+  NDT	 -10:00
+Pacific/Nauru
+  LMT	 +11:07
+  NRT	 +12:00
+  NRT	 +11:30
+  JST	 +09:00
+Pacific/Niue
+  LMT	 -12:40
+  NUT	 -11:00
+  NUT	 -12:40
+  NUT	 -12:30
+Pacific/Norfolk
+  LMT	 +11:11
+  NMT	 +11:12
+  NFT	 +11:30
+Pacific/Noumea
+  LMT	 +11:05
+  NCT	 +11:00
+  NCST	 +12:00
+Pacific/Pago_Pago
+  SST	 -11:00
+  LMT	 +12:37
+  NST	 -11:00
+  LMT	 -12:37
+  BST	 -11:00
+  SAMT	 -12:30
+Pacific/Palau
+  LMT	 +08:57
+  PWT	 +09:00
+Pacific/Pitcairn
+  LMT	 -09:19
+  PNT	 -09:30
+  PST	 -08:00
+Pacific/Ponape
+  LMT	 +10:32
+  PONT	 +11:00
+Pacific/Port_Moresby
+  LMT	 +09:48
+  PMMT	 +09:48
+  PGT	 +10:00
+Pacific/Rarotonga
+  LMT	 -11:20
+  CKT	 -10:00
+  CKT	 -11:30
+  CKHST	 -10:30
+Pacific/Saipan
+  LMT	 -15:43
+  MPT	 +10:00
+  LMT	 +09:43
+  ChST	 +10:00
+  MPT	 +09:00
+Pacific/Samoa
+Pacific/Tahiti
+  LMT	 -10:01
+  TAHT	 -10:00
+Pacific/Tarawa
+  LMT	 +11:32
+  GILT	 +12:00
+Pacific/Tongatapu
+  LMT	 +12:19
+  TOST	 +14:00
+  TOT	 +12:20
+  TOT	 +13:00
+Pacific/Truk
+  LMT	 +10:07
+  TRUT	 +10:00
+Pacific/Wake
+  LMT	 +11:06
+  WAKT	 +12:00
+Pacific/Wallis
+  LMT	 +12:15
+  WFT	 +12:00
+Pacific/Yap
+Poland
+Portugal
+ROC
+ROK
+Singapore
+Turkey
+UCT
+US/Alaska
+US/Aleutian
+US/Arizona
+US/Central
+US/East-Indiana
+US/Eastern
+US/Hawaii
+US/Indiana-Starke
+US/Michigan
+US/Mountain
+US/Pacific
+US/Pacific-New
+US/Samoa
+UTC
+Universal
+W-SU
+WET
+  WET	 +00:00
+  WEST	 +01:00
+Zulu

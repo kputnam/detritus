@@ -1,0 +1,61 @@
+
+// try each setting from left until one works
+// PROXY host:port; SOCKS host:port; DIRECT
+
+// check where I am?
+isInNet(myIpAddress(), network, netmask)
+
+// true if string matches shell expression
+shExpMatch(string, pattern)
+
+// false if any dots in the hostname
+isPlainHostName(string)
+
+// true if host's IP is in given network
+isInNet(host, network, subnet)
+
+// true if host name resolves
+isResolvable(host)
+
+// returns IP address of host
+dnsResolve(host)
+
+// true if domain of the host matches string
+dnsDomainIs(host, domain)
+
+// returns number of dots in hostname
+dnsDomainLevels(host)
+
+// true if given host matches domain
+localHostOrDomainIs(host, domain)
+
+// extract characters indexed a through b
+string.substring(a, b)
+
+// returns client machine's IP address
+myIpAddress()
+
+// true if current time is between weekdays a and b
+weekdayRange("MON", "FRI", "GMT")
+weekdayRange("FRI", "GMT")
+
+// true if current time matches given parameters
+dateRange(day)
+dateRange(day1, day2)
+dateRange(mon)
+dateRange(mon1, mon2)
+dateRange(year)
+dateRange(year1, year2)
+dateRange(day1, month1, day2, month2)
+dateRange(month1, year1, month2, year2)
+dateRange(day1, month1, year1, day2, month2, year2)
+
+// true if current time matches given parameters
+timeRange(hour)
+timeRange(hour1, hour2)
+timeRange(hour1, min1, hour2, min2)
+timeRange(hour1, min1, sec1, hour2, min2, sec2)
+
+// associative array?
+ProxyConfig.bindings
+

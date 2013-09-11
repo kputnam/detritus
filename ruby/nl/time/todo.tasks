@@ -1,0 +1,101 @@
+$Hg$
+
+- FIXME: '16/Feb/2008:21:46:39 -0600'.nltime =>
+                     ^
+  [ #<Token:16 [16, :numeric]>,
+    #<Token:Feb/2008:21:46:39  [#<Entity:Date Wed 2/20/2008>]>,
+    #<Token:-0600 [#<Duration:Offset ["-06", "00"]>, -600, :numeric]> ]
+
+- FIXME: 8/30 should probably interpret => M/D
+  especially with a year in there somewhere
+
+#<NLTime::Entity>.count(:hour), :minute, :second
+  this is not aware of leap days, etc
+  
+  a '25 hour' day is still a day however, so #count(:day),
+    #count(:week), #count(:month), etc are still correct
+
+  - FIXME: NLTime['Feb 29 2008'].first.fetch(NLTime::Entity).count(:hour) #=> 24
+
+- Write unit tests!
+- Pass context's year for each NLTime::Entity::Year.convert()
+
+Parser:
+- tagger must allow multiple 'winners', for tagger
+✓ FIXME 23:59:59.9942"
+  => [#<Token:23:59:59.9942 [:numeric]>]
+- FIXME "2359Z"
+  => [#<Token:2359 [:year, 2359, :numeric]>, #<Token:Z [:word]>]
+- FIXME '012'
+  => [#<Token:012 [#<Duration:Time ["0", "12", nil]>, ...]>]
+- FIXME '2pm'
+  => [#<Token:2 [2, :numeric]>, #<Token:pm [:meridiem, :pm, :word]>]
+
+Reducer:
+✓ FIXME: '(8)/(30)/(2000)'.nltime => exception nil#[]
+
+- don't repeat tests unless relevant elements have 'changed'
+  "Monday May 28, @02:24AM"
+  * @1: no [:month, :numeric]
+  * @2: no [:numeric, NLTime::Duration::Time]
+    @3: OK [NLTime::Duration::Time, :meridiem]
+  * @1: no [:month, :numeric]
+  * @2: no [:numeric, NLTime::Duration::Time]
+  * @1: no [:month, :numeric]
+  * @2: no [:numeric, NLTime::Duration::Time]
+
+✓ use NLTime::Token#prepend and #append instead of before = ...
+- FIXME "Mon, 07-Jan-2013 08:57:08 GMT"
+- FIXME "1997W012"
+  => [#<Token:1997 [:year, 1997, :numeric]>,
+      #<Token:W [:word]>,
+      #<Token:012 [#<Duration:Time ["0", "12", nil]>, 12, :numeric]>]
+- FIXME "1995035"
+  => [#<Token:1995035 [#<Entity:Date Sun 3/5/1995>, 1995035, :numeric]>]
+✓ FIXME "Today at approximately 1:00 pm"
+  @2: OK [/at|@/i, NLTime::Duration::Time]
+  @1: OK [/at|@/i, NLTime::Duration::Time]
+  @0: OK [NLTime::Entity::Date, NLTime::Duration::Time]
+  @0: OK [NLTime::Entity::Time, :meridiem]
+  [#<Token:Today atapproximately1:00 pm [#<Entity:Time 13:00:00 Thu 1/10/2008>]>]
+
+  FIXME "26 May 2007 @ 11:33 pm"
+  [#<Token:26 May 2007 #<Token:0x46794> 11:33  pm [#<Entity:Time ...>]>]
+
+Token:
+- implement #prepend and #append
+  
+Tokenizer:
+- FIXME: NLTime[ %{1997-} ].first.word #=> "1997-"
+- handle unicode-chars like dash
+- handle international ASCII chars
+- problems with - which may or may not be a range
+- FIXMEs ?
+  - May-29-07 19:35:42 PDT
+    ["May", "29-07", "19:35:42", "PDT"]
+             ^^^^^
+  - 1997-W01
+    ["1997", "W", "01"]
+
+  - 1997W01
+    ["1997", "W", "01"]
+
+  - 1997-W01-2
+    ["1997", "W", "01-2"]
+                   ^^^^
+  - 8:00am-5:00pm Monday
+    ["8:00", ["am", "-"], "5:00", "pm", "Monday"]
+                    ^^^
+  - 12/22/07-12/25/07
+    ["12/22/07-12/25/07"]
+              ^
+  - 11:00-11:50
+    ["11:00-11:50"]
+           ^
+
+Timezones:
+- recognize timezones in parser
+  - GMT, UTC (three letter codes)
+  - military zones A-Z
+  - descriptive America/Central, America/New York
+- apply offsets (from GMT) correctly
