@@ -350,6 +350,7 @@ newtype StateT s m a
 
 instance Functor m => Functor (StateT s m) where
   f <$> x = StateT (\s -> (f <$>) <$> runStateT x s)
+         -- StateT (((f <$>) <$>) <$> runStateT x)
 
 instance Applicative m => Applicative (StateT s m) where
   pure x  = StateT (\s -> pure (s, x))
