@@ -2,10 +2,35 @@
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE FlexibleInstances      #-}
 
-module Trans where
+module Trans
+  ( Monoid(..), concat
+  , Functor(..), (<$)
+  , Applicative(..), (*>), (<*)
+  , Monad(..), Lift(..)
+  --, (<=<), (>=>), filterM, foldM, forM, forever, mapM
+  --, replicateM, sequence, unless, when, zipWithM
+  , Id(..)
+  , Maybe(..), MaybeT(..), maybe
+  , ListT(..)
+  , ReaderT(..), ReaderOps(..), runReader
+  , WriterT(..), execWriterT, evalWriterT
+  , WriterOps(..), runWriter, execWriter, evalWriter
+  , Either(..), EitherT(..), either
+  , State(..), runState, evalState, execState
+  , StateT(..), evalStateT, execStateT
+  , StateOps(..)
+  ) where
 
-import Prelude (Num(..), Char(..), Show(..), Eq(..), id, flip, foldr, error)
 import qualified Prelude as P
+import Prelude
+  ( Num(..), Char(..), Show(..)
+  , Eq(..), Enum(..), Bounded(..)
+  , id, flip, foldr, fst, snd )
+
+infixl 4 <$>
+infixl 4 <*>
+infixr 1 =<<
+infixr 6 <>
 
 -- Monoid
 --------------------------------------------------------------------------------
@@ -14,14 +39,18 @@ class Monoid m where
   (<>)  :: m -> m -> m
   empty :: m
 
--- concat :: Monoid m => [m] -> m
+concat :: Monoid m => [m] -> m
+concat = foldr (<>) empty
 
 -- Functor
 --------------------------------------------------------------------------------
 
 class Functor f where
   (<$>) :: (a -> b) -> f a -> f b
--- (<$) :: Functor f => a -> f b -> f a
+
+(<$) :: Functor f => a -> f b -> f a
+(<$) a b = h <$> b
+  where h b = a
 
 -- Applicative
 --------------------------------------------------------------------------------
@@ -29,8 +58,14 @@ class Functor f where
 class Functor f => Applicative f where
   pure  :: a -> f a
   (<*>) :: f (a -> b) -> f a -> f b
--- (<*) :: f a -> f b -> f a
--- (*>) :: f a -> f b -> f b
+
+(<*) :: Applicative f => f a -> f b -> f a
+(<*) f g = h <$> f <*> g
+  where h a b = a
+
+(*>) :: Applicative f => f a -> f b -> f b
+(*>) f g = h <$> f <*> g
+  where h a b = b
 
 -- Monad
 --------------------------------------------------------------------------------
@@ -56,12 +91,18 @@ class Applicative f => Monad f where
 -- when       :: Monad m => Bool -> m () -> m ()
 -- zipWithM   :: Monad m => (a -> b -> m c) -> [a] -> [b] -> m [c]
 
+-- Lift
+--------------------------------------------------------------------------------
+
+class Lift t where
+  lift :: Monad m => m a -> t m a
+
 -- Unit
 --------------------------------------------------------------------------------
 
 instance Monoid () where
-  empty   = ()
-  _ <> _  = ()
+  empty  = ()
+  _ <> _ = ()
 
 -- Id
 --------------------------------------------------------------------------------
@@ -110,6 +151,10 @@ instance Applicative Maybe where
 instance Monad Maybe where
   f =<< x = maybe Nothing f x
 
+maybe :: b -> (a -> b) -> Maybe a -> b
+maybe a _ Nothing  = a
+maybe _ f (Just x) = f x
+
 -- MaybeT
 --------------------------------------------------------------------------------
 
@@ -126,18 +171,12 @@ instance Applicative m => Applicative (MaybeT m) where
 instance Monad m => Monad (MaybeT m) where
   f =<< x = MaybeT (maybe nothing just =<< runMaybeT x)
     where nothing = pure Nothing    --
-          just a  = runMaybeT (f a) --
-    -- f =<< x = maybe Nothing f x
+          just    = runMaybeT <$> f --
+    -- Note the resemblance to the definition of (=<<) on Maybe:
+    --   f =<< x = maybe Nothing f x
 
--- MaybeOps
---------------------------------------------------------------------------------
-
-maybe :: b -> (a -> b) -> Maybe a -> b
-maybe a _ Nothing  = a
-maybe _ f (Just x) = f x
-
-orElse :: Maybe a -> a -> a
-orElse m a = maybe a id m
+instance Lift MaybeT where
+  lift m = MaybeT (pure <$> m)
 
 -- List
 --------------------------------------------------------------------------------
@@ -174,17 +213,19 @@ instance Applicative m => Applicative (ListT m) where
 
 instance Monad m => Monad (ListT m) where
   f =<< x = ListT (g =<< runListT x)
-    where g as   = foldr h (pure []) as
-          h a bs = (<>) <$> runListT (f a) <*> bs
-    -- f =<< xs = foldr (\x bs -> f x <> bs) [] xs
+    where g xs   = foldr (\x bs -> f x `op` bs) (pure []) xs
+          op m n = (<>) <$> runListT m <*> n
+    -- Note the resemblance to the definition of (=<<) on []:
+    --   f =<< xs = foldr (\x bs -> f x <> bs) [] xs
 
--- ListOps
---------------------------------------------------------------------------------
-
-
+instance Lift ListT where
+  lift m = ListT (pure <$> m)
 
 -- Reader
 --------------------------------------------------------------------------------
+
+runReader :: (e -> a) -> e -> a
+runReader x = x
 
 instance Monoid a => Monoid (e -> a) where
   empty e    = empty
@@ -214,9 +255,13 @@ instance Applicative m => Applicative (ReaderT e m) where
   f <*> x = ReaderT ((<*>) <$> runReaderT f <*> runReaderT x)
 
 instance Monad m => Monad (ReaderT e m) where
-  f =<< x = ReaderT ((=<<) <$> g <*> runReaderT x)
-    where g e a = runReaderT (f a) e
-    -- (=<<) f g e = f (g e) e
+  f =<< x = ReaderT (\e -> g e =<< runReaderT x e)
+    where g e = flip runReaderT e <$> f
+    -- Note the mild resemblance to the definition of (>>=) on ((->) e)
+    --   f =<< x = \e -> f (x e) e
+
+instance Lift (ReaderT e) where
+  lift m = ReaderT (pure m)
 
 -- ReaderOps
 --------------------------------------------------------------------------------
@@ -255,6 +300,15 @@ instance Monoid w => Monad ((,) w) where
     where (wx, xx) = x
           (wf, xf) = f xx
 
+runWriter :: (w, a) -> (w, a)
+runWriter x = x
+
+execWriter :: (w, a) -> w
+execWriter (w, _) = w
+
+evalWriter :: (w, a) -> a
+evalWriter (_, a) = a
+
 -- WriterT
 --------------------------------------------------------------------------------
 
@@ -272,9 +326,15 @@ instance (Monoid w, Monad m) => Monad (WriterT w m) where
   f =<< x = WriterT (g =<< runWriterT x)
     where g (w, a)   = h w <$> runWriterT (f a)
           h w (v, a) = (w <> v, a)
-    -- f =<< x = (wx <> wf, xf)
-    --   where (wx, xx) = x
-    --         (wf, xf) = f xx
+
+instance Monoid w => Lift (WriterT w) where
+  lift m = WriterT (pure <$> m)
+
+execWriterT :: Functor m => WriterT w m a -> m w
+execWriterT x = fst <$> runWriterT x
+
+evalWriterT :: Functor m => WriterT w m a -> m a
+evalWriterT x = snd <$> runWriterT x
 
 -- WriterOps
 --------------------------------------------------------------------------------
@@ -286,6 +346,10 @@ class (Monoid w, Monad m) => WriterOps w m | m -> w where
 instance Monoid w => WriterOps w ((,) w) where
   tell w   = (w, ())
   writer x = x
+
+instance (Monoid w, Monad m) => WriterOps w (WriterT w m) where
+  tell w   = WriterT (pure (w, ()))
+  writer x = WriterT (pure x)
 
 -- Either
 --------------------------------------------------------------------------------
@@ -309,6 +373,10 @@ instance Monad (Either a) where
   f =<< Right x = f x
   f =<< Left x  = Left x
 
+either :: (a -> c) -> (b -> c) -> Either a b -> c
+either f _ (Left a)  = f a
+either _ f (Right b) = f b
+
 -- EitherT
 --------------------------------------------------------------------------------
 
@@ -320,7 +388,13 @@ instance Functor m => Functor (EitherT a m) where
 
 instance Applicative m => Applicative (EitherT a m) where
   pure x  = EitherT (pure (pure x))
-  f <*> g = EitherT ((<*>) <$> runEitherT f <*> runEitherT g)
+  f <*> x = EitherT ((<*>) <$> runEitherT f <*> runEitherT x)
+
+instance Monad m => Monad (EitherT a m) where
+  f =<< x = P.error "todo"
+
+instance Lift (EitherT a) where
+  lift m = EitherT (pure m)
 
 -- State
 --------------------------------------------------------------------------------
@@ -329,20 +403,38 @@ newtype State s a
   = State { runState :: s -> (s, a) }
 
 instance Functor (State s) where
-  f <$> x = State (\s -> f <$> runState x s)
+  f <$> x = State (\s0 -> f <$> runState x s0)
 
 instance Applicative (State s) where
-  pure x  = State (\s -> (s, x))
-  f <*> x = State (\s -> let (sx, ax) = runState x s
-                             (sf, af) = runState f sx
-                          in (sf, af ax))
+  pure x  = State (\s0 -> (s0, x))
+  f <*> x = State (\s0 -> let (s1, f') = runState f s0
+                              (s2, x') = runState x s1
+                           in (s2, f' x'))
 
 instance Monad (State s) where
-  f =<< x = State (\s -> let (sx, ax) = runState x s
-                          in runState (f ax) sx)
+  f =<< x = State (\s0 -> let (s1, x') = runState x s0
+                           in runState (f x') s1)
+
+-- type State s a
+--   = StateT s Id a
+--
+-- runState :: State s a -> s -> (s, a)
+-- runState x s = runId (runStateT x s)
+
+execState :: State s a -> s -> s
+execState x s = fst (runState x s)
+
+evalState :: State s a -> s -> a
+evalState x s = snd (runState x s)
 
 -- StateT
 --------------------------------------------------------------------------------
+
+execStateT :: Functor m => StateT s m a -> s -> m s
+execStateT x s = fst <$> runStateT x s
+
+evalStateT :: Functor m => StateT s m a -> s -> m a
+evalStateT x s = snd <$> runStateT x s
 
 -- Hmm! There's no nice instances to reuse!
 newtype StateT s m a
@@ -350,11 +442,22 @@ newtype StateT s m a
 
 instance Functor m => Functor (StateT s m) where
   f <$> x = StateT (\s -> (f <$>) <$> runStateT x s)
-         -- StateT (((f <$>) <$>) <$> runStateT x)
+  --      = StateT (((f <$>) <$>) <$> runStateT x)
 
 instance Applicative m => Applicative (StateT s m) where
   pure x  = StateT (\s -> pure (s, x))
-  -- TODO (<*>)
+  f <*> x = StateT (\s -> op <$> runStateT f s)
+    where op = P.error "todo"
+    -- f :: s -> m (s, a -> b)
+    -- x :: s -> m (s, a)
+
+instance Monad m => Monad (StateT s m) where
+  f =<< x = StateT (\s -> g =<< runStateT x s)
+  --      = StateT ((=<<) <$> pure g <*> runStateT x)
+    where g (s, a) = runStateT (f a) s
+
+instance Lift (StateT s) where
+  lift m = StateT (\s -> (\a -> (s, a)) <$> m)
 
 -- StateOps
 --------------------------------------------------------------------------------
@@ -367,9 +470,10 @@ class StateOps s m | m -> s where
 instance StateOps s (State s) where
   get     = State (\s -> (s, s))
   put s   = State (\_ -> (s, ()))
-  state f = State f
+  state f = State (\s -> f s)
 
 instance Monad m => StateOps s (StateT s m) where
   get     = StateT (\s -> pure (s, s))
   put s   = StateT (\_ -> pure (s, ()))
   state f = StateT (\s -> pure (f s))
+
