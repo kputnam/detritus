@@ -73,7 +73,7 @@ class Functor f => Applicative f where
 class Applicative f => Monad f where
   (=<<) :: (a -> f b) -> f a -> f b
   join  :: f (f a) -> f a
-  
+
   -- Mutually recursive definitions
   f =<< x = join (f <$> x)
   join x  = id =<< x
@@ -95,6 +95,7 @@ class Applicative f => Monad f where
 --------------------------------------------------------------------------------
 
 class Lift t where
+  -- TODO: Do we really need Monad m?
   lift :: Monad m => m a -> t m a
 
 -- Unit
@@ -201,25 +202,53 @@ instance Monad [] where
 -- ListT
 --------------------------------------------------------------------------------
 
+-- newtype ListT m a
+--   = ListT { runListT :: m [a] }
+--
+-- instance Functor m => Functor (ListT m) where
+--   f <$> x = ListT ((f <$>) <$> runListT x)
+--
+-- instance Applicative m => Applicative (ListT m) where
+--   pure x  = ListT (pure (pure x))
+--   f <*> x = ListT ((<*>) <$> runListT f <*> runListT x)
+--
+-- instance Monad m => Monad (ListT m) where
+--   f =<< x = ListT (g =<< runListT x)
+--     where g xs   = foldr (\x bs -> f x `op` bs) (pure []) xs
+--           op m n = (<>) <$> runListT m <*> n
+--     -- Note the resemblance to the definition of (=<<) on []:
+--     --   f =<< xs = foldr (\x bs -> f x <> bs) [] xs
+--
+-- instance Lift ListT where
+--   lift m = ListT (pure <$> m)
+
 newtype ListT m a
-  = ListT { runListT :: m [a] }
+  = ListT { runListT :: m (Maybe (a, ListT m a)) }
 
 instance Functor m => Functor (ListT m) where
-  f <$> x = ListT ((f <$>) <$> runListT x)
+  f <$> x = ListT ((f *** rec <$>) <$> runListT x)
+    where
+      rec xs  = f <$> xs
+      f *** g = \(a, b) -> (f a, g b)
 
 instance Applicative m => Applicative (ListT m) where
-  pure x  = ListT (pure (pure x))
-  f <*> x = ListT ((<*>) <$> runListT f <*> runListT x)
+  pure x  = ListT (pure (pure (x, ListT (pure Nothing))))
+  f <*> x =
 
 instance Monad m => Monad (ListT m) where
-  f =<< x = ListT (g =<< runListT x)
-    where g xs   = foldr (\x bs -> f x `op` bs) (pure []) xs
-          op m n = (<>) <$> runListT m <*> n
-    -- Note the resemblance to the definition of (=<<) on []:
-    --   f =<< xs = foldr (\x bs -> f x <> bs) [] xs
 
 instance Lift ListT where
-  lift m = ListT (pure <$> m)
+  -- NOTE: only needs Applicative m
+  lift m = ListT (f <$> m)
+    where f a = Just (a, ListT (pure Nothing))
+
+-- ListOps
+--------------------------------------------------------------------------------
+
+--    :: Monad m => (a ->   b -> m a) ->   a -> [b]       -> m a
+--ldT :: Monad m => (a -> m b -> m b) -> m b -> ListT m a -> m b
+
+
 
 -- Reader
 --------------------------------------------------------------------------------
