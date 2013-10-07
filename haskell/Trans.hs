@@ -10,12 +10,17 @@ module Trans
   --, (<=<), (>=>), filterM, foldM, forM, forever, mapM
   --, replicateM, sequence, unless, when, zipWithM
   , Id(..)
-  , Maybe(..), MaybeT(..), runMaybe
+  , Maybe(..), runMaybe
+  , MaybeT(..)
   , ListT(..), consT, foldT, toListT, unListT
-  , ReaderT(..), ReaderOps(..), runReader
+  , runReader
+  , ReaderT(..), ReaderOps(..)
+  , runWriter, execWriter, evalWriter
   , WriterT(..), execWriterT, evalWriterT
-  , WriterOps(..), runWriter, execWriter, evalWriter
-  , Either(..), EitherT(..), runEither
+  , WriterOps(..)
+  , Either(..), runEither
+  , EitherT(..)
+  , EitherOps(..)
   , State(..), runState, evalState, execState
   , StateT(..), evalStateT, execStateT
   , StateOps(..)
@@ -30,8 +35,15 @@ import Prelude
   , id, flip, foldr, fst, snd )
 
 infixl 4 <$>
+infixl 4 <$
 infixl 4 <*>
+infixl 4 *>
+infixl 4 <*
 infixr 1 =<<
+-- infixl 1 >>=
+-- infixl 1 >>
+-- infixr 1 >=>
+-- infixr 1 <=<
 infixr 6 <>
 
 -- Monoid
@@ -225,15 +237,19 @@ newtype ListT m a
 toListT :: Monad m => [m a] -> ListT m a
 toListT xs = foldr consT empty xs
 
+-- Sequences the effects in each cons cell into one effect. Converting
+-- @ListT m a@ to @[m a]@ requires a separate function for each @m@.
 unListT :: Monad m => ListT m a -> m [a]
 unListT xs = foldT f (pure empty) xs
   where f a as = (a:) <$> as
 
+-- Sequences the effects in each cons cell into one effect.
 foldT :: Monad m => (a -> m b -> m b) -> m b -> ListT m a -> m b
 foldT f z xs = g =<< runListT xs
   where g m       = runMaybe z c m
         c (a, as) = f a (foldT f z as)
 
+-- Prepend an element at the beginning of the list
 consT :: Monad m => m a -> ListT m a -> ListT m a
 consT m ms = ListT (g =<< m)
   where g a = pure (Just (a, ms))
@@ -241,8 +257,8 @@ consT m ms = ListT (g =<< m)
 instance Monad m => Monoid (ListT m a) where
   empty  = ListT (pure Nothing)
   a <> b = ListT (runMaybe z f =<< runListT a)
-    where f (a, as) = pure (Just (a, as <> b))
-          z         = runListT b
+    where f (h, t) = pure (Just (h, t <> b))  -- pure <$> Just <$> id *** (<> b)
+          z        = runListT b
 
 instance Functor m => Functor (ListT m) where
   f <$> xs = ListT ((f *** rec <$>) <$> runListT xs)
@@ -256,7 +272,9 @@ instance Applicative m => Applicative (ListT m) where
           op (f, fs) (x, xs) = (f x, fs <*> xs)
 
 instance Monad m => Monad (ListT m) where
-  f =<< xs = P.error "todo"
+  f =<< xs = ListT (runMaybe n j =<< runListT xs)
+    where n        = pure Nothing
+          j (h, t) = runListT (f h <> (f =<< t))
 
 instance Lift ListT where
   lift m = ListT (f <$> m)
@@ -350,14 +368,14 @@ instance Monoid w => Monad ((,) w) where
 -- WriterT
 --------------------------------------------------------------------------------
 
+newtype WriterT w m a
+  = WriterT { runWriterT :: m (w, a) }
+
 execWriterT :: Functor m => WriterT w m a -> m w
 execWriterT x = fst <$> runWriterT x
 
 evalWriterT :: Functor m => WriterT w m a -> m a
 evalWriterT x = snd <$> runWriterT x
-
-newtype WriterT w m a
-  = WriterT { runWriterT :: m (w, a) }
 
 instance Functor m => Functor (WriterT w m) where
   f <$> x = WriterT ((f <$>) <$> runWriterT x)
@@ -378,7 +396,10 @@ instance Monoid w => Lift (WriterT w) where
 --------------------------------------------------------------------------------
 
 class (Monoid w, Monad m) => WriterOps w m | m -> w where
+  -- | Merge the argument with the log output
   tell   :: w -> m ()
+
+  -- | Lift a tuple of log data and value into the monad @m@
   writer :: (w, a) -> m a
 
 instance Monoid w => WriterOps w ((,) w) where
@@ -397,6 +418,10 @@ data Either a b
   | Right b
   deriving (Show, Eq)
 
+runEither :: (a -> c) -> (b -> c) -> Either a b -> c
+runEither f _ (Left a)  = f a
+runEither _ f (Right b) = f b
+
 instance Functor (Either a) where
   f <$> Right x = Right (f x)
   f <$> Left x  = Left x
@@ -411,10 +436,6 @@ instance Monad (Either a) where
   f =<< Right x = f x
   f =<< Left x  = Left x
 
-runEither :: (a -> c) -> (b -> c) -> Either a b -> c
-runEither f _ (Left a)  = f a
-runEither _ f (Right b) = f b
-
 -- EitherT
 --------------------------------------------------------------------------------
 
@@ -424,15 +445,34 @@ newtype EitherT e m a
 instance Functor m => Functor (EitherT e m) where
   f <$> x = EitherT ((f <$>) <$> runEitherT x)
 
-instance Applicative m => Applicative (EitherT a m) where
-  pure x  = EitherT (pure (pure x))
+instance Applicative m => Applicative (EitherT e m) where
+  pure x  = EitherT (pure (Right x))
   f <*> x = EitherT ((<*>) <$> runEitherT f <*> runEitherT x)
 
-instance Monad m => Monad (EitherT a m) where
-  f =<< x = P.error "todo"
+instance Monad m => Monad (EitherT e m) where
+  f =<< x = EitherT (runEither l r =<< runEitherT x)
+    where l e = pure (Left e)
+          r a = runEitherT (f a)
 
-instance Lift (EitherT a) where
+instance Lift (EitherT e) where
   lift m = EitherT (pure <$> m)
+
+-- EitherOps
+--------------------------------------------------------------------------------
+
+class Monad m => EitherOps e m | m -> e where
+  throw :: e -> m a
+  catch :: m a -> (e -> m a) -> m a
+
+instance EitherOps e (Either e) where
+  throw e   = Left e
+  catch m f = runEither f Right m
+
+instance Monad m => EitherOps e (EitherT e m) where
+  throw e   = EitherT (pure (throw e))
+  catch m f = EitherT (runEither l r =<< runEitherT m)
+    where l e = runEitherT (f e)
+          r a = pure (Right a)
 
 -- State
 --------------------------------------------------------------------------------
@@ -443,27 +483,31 @@ instance Lift (EitherT a) where
 newtype State s a
   = State { runState :: s -> (s, a) }
 
-instance Functor (State s) where
-  f <$> x = State (\s0 -> f <$> runState x s0)
-
-instance Applicative (State s) where
-  pure x  = State (\s0 -> (s0, x))
-  f <*> x = State (\s0 -> let (s1, f') = runState f s0
-                              (s2, x') = runState x s1
-                           in (s2, f' x'))
-
-instance Monad (State s) where
-  f =<< x = State (\s0 -> let (s1, x') = runState x s0
-                           in runState (f x') s1)
-
 execState :: State s a -> s -> s
 execState x s = fst (runState x s)
 
 evalState :: State s a -> s -> a
 evalState x s = snd (runState x s)
 
+instance Functor (State s) where
+  f <$> x = State (\s0 -> f <$> runState x s0)
+
+instance Applicative (State s) where
+  pure x  = State (\s0 -> (s0, x))
+  f <*> x = State (\s0 -> let (s1, f') = runState f s0
+                              (s2, x') = runState x s1 -- id *** f' (runState x s1)
+                           in (s2, f' x'))
+
+instance Monad (State s) where
+  f =<< x = State (\s0 -> let (s1, x') = runState x s0
+                           in runState (f x') s1)
+
 -- StateT
 --------------------------------------------------------------------------------
+
+-- Hmm! There's no nice instances to reuse!
+newtype StateT s m a
+  = StateT { runStateT :: s -> m (s, a) }
 
 execStateT :: Functor m => StateT s m a -> s -> m s
 execStateT x s = fst <$> runStateT x s
@@ -471,20 +515,24 @@ execStateT x s = fst <$> runStateT x s
 evalStateT :: Functor m => StateT s m a -> s -> m a
 evalStateT x s = snd <$> runStateT x s
 
--- Hmm! There's no nice instances to reuse!
-newtype StateT s m a
-  = StateT { runStateT :: s -> m (s, a) }
-
 instance Functor m => Functor (StateT s m) where
   f <$> x = StateT (\s -> (f <$>) <$> runStateT x s)
   --      = StateT (((f <$>) <$>) <$> runStateT x)
 
-instance Applicative m => Applicative (StateT s m) where
-  pure x  = StateT (\s -> pure (s, x))
-  f <*> x = StateT (\s -> op <$> runStateT f s)
-    where op = P.error "todo"
-    -- f :: s -> m (s, a -> b)
-    -- x :: s -> m (s, a)
+-- TODO: Applicative m => Applicaitve (StateT s m)
+instance Monad m => Applicative (StateT s m) where
+  pure x  = StateT (\s0 -> pure (s0, x))
+  f <*> x = StateT (\s0 -> g =<< runStateT f s0)
+    where g (s1, f') = (id *** f') <$> runStateT x s1
+          f *** g    = \(a, b) -> (f a, g b)
+    --
+    --    runStateT f :: s -> m (s, a -> b)
+    --    runStateT x :: s -> m (s, a     )
+    --
+    -- runStateT f s0 :: m (s, a -> b)
+    -- runStateT x s1 :: m (s, a     )
+    --
+    -- ...
 
 instance Monad m => Monad (StateT s m) where
   f =<< x = StateT (\s -> g =<< runStateT x s)
