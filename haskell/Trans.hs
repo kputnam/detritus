@@ -1,6 +1,7 @@
 {-# LANGUAGE NoImplicitPrelude      #-}
 {-# LANGUAGE FunctionalDependencies #-}
 {-# LANGUAGE FlexibleInstances      #-}
+{-# LANGUAGE UndecidableInstances   #-}
 
 module Trans
   ( Monoid(..), concat
@@ -14,7 +15,8 @@ module Trans
   , MaybeT(..)
   , ListT(..), consT, foldT, toListT, unListT
   , runReader
-  , ReaderT(..), ReaderOps(..)
+  , ReaderT(..)
+  , ReaderOps(..)
   , runWriter, execWriter, evalWriter
   , WriterT(..), execWriterT, evalWriterT
   , WriterOps(..)
@@ -41,16 +43,27 @@ infixl 4 *>
 infixl 4 <*
 infixr 1 =<<
 -- infixl 1 >>=
--- infixl 1 >>
 -- infixr 1 >=>
 -- infixr 1 <=<
 infixr 6 <>
 
 -- Monoid
 --------------------------------------------------------------------------------
+-- Monoids are sets extended with an associative binary operation @<>@ and an
+-- identity element @empty@ such that:
+--
+-- @<>@ is associative
+--    forall a:m, b:m, c:m. a <> (b <> c) == (a <> b) <> c
+--
+-- @empty@ is the left and right identity of @<>@
+--    forall a:m. empty <> a == a
+--    forall a:m. a <> empty == a
 
 class Monoid m where
+  -- | An associative binary operation combining two values
   (<>)  :: m -> m -> m
+
+  -- | The left and right identity of @<>@
   empty :: m
 
 concat :: Monoid m => [m] -> m
@@ -58,31 +71,61 @@ concat = foldr (<>) empty
 
 -- Functor
 --------------------------------------------------------------------------------
+-- Functors map "pure" functions @a -> b@ to "effectful" functions @f a -> f b@
+-- such that:
+--
+--    (id <$>)    == id
+--    (g . f <$>) == (g <$>) . (f <$>)
 
 class Functor f where
+  -- | Lifts the given pure function into @f@.
   (<$>) :: (a -> b) -> f a -> f b
 
+-- | Replaces all @b@ locations with the same given @a@ value.
 (<$) :: Functor f => a -> f b -> f a
 (<$) a b = h <$> b
   where h b = a
 
 -- Applicative
 --------------------------------------------------------------------------------
+-- An applicative functor is a functor with application providing operations
+-- to lift "pure" values into @f@ and sequence computations in @f@ and their
+-- results, such that the following laws are satisfied:
+--
+-- identity
+--   pure id <*> x = x
+--
+-- composition
+--   pure (.) <*> x <*> y <*> z = u <*> (v <*> w)
+--
+-- homomorphism
+--   pure f <*> pure x = pure (f x)
+--
+-- interchange
+--   f <*> pure x = pure ($ x) <*> f
 
 class Functor f => Applicative f where
+  -- | Lift a pure value into @f@.
   pure  :: a -> f a
+
+  -- | Given an effectful computation that produces a function @a -> b@, apply
+  -- it to the @a@ value produced by the other effectful computation.
   (<*>) :: f (a -> b) -> f a -> f b
 
+-- | Sequence two computations, discarding the value produced by the second
 (<*) :: Applicative f => f a -> f b -> f a
 (<*) f g = h <$> f <*> g
   where h a b = a
 
+-- | Sequence two computations, discarding the value produced by the first
 (*>) :: Applicative f => f a -> f b -> f b
 (*>) f g = h <$> f <*> g
   where h a b = b
 
 -- Monad
 --------------------------------------------------------------------------------
+-- Monads are applicative functors whose computations can depend on the results
+-- of previous computations.
 
 class Applicative f => Monad f where
   (=<<) :: (a -> f b) -> f a -> f b
@@ -92,8 +135,6 @@ class Applicative f => Monad f where
   f =<< x = join (f <$> x)
   join x  = id =<< x
 
--- (>>)       :: Monad m => m a -> m b -> m a
--- (<<)       :: Monad m => m a -> m b -> m b
 -- (>>=)      :: Monad m => m a -> (a -> m b) -> m b
 -- (<=<)      :: Monad m => (b -> m c) -> (a -> m b) -> a -> m c
 -- (>=>)      :: Monad m => (a -> m b) -> (b -> m c) -> a -> m c
@@ -136,6 +177,9 @@ instance Monad IO where
 
 -- Id
 --------------------------------------------------------------------------------
+-- Represents a computation that produces a value of type @a@. This is a trivial
+-- wrapper around @a@, but can be used with classes or functions parameterized
+-- over a functor, applicative, or monad.
 
 newtype Id a
   = Id { runId :: a }
@@ -157,12 +201,16 @@ instance Monad Id where
 
 -- Maybe
 --------------------------------------------------------------------------------
+-- Represents a computation that either produces a value of type @a@ or instead
+-- produces nothing.
 
 data Maybe a
   = Nothing
   | Just a
   deriving (Show, Eq)
 
+-- | Unwrap a @Maybe a@ value by providing a default value of type @b@ and a
+-- function to map an @a@ to a @b@.
 runMaybe :: b -> (a -> b) -> Maybe a -> b
 runMaybe a _ Nothing  = a
 runMaybe _ f (Just x) = f x
@@ -199,9 +247,9 @@ instance Applicative m => Applicative (MaybeT m) where
   f <*> x = MaybeT ((<*>) <$> runMaybeT f <*> runMaybeT x)
 
 instance Monad m => Monad (MaybeT m) where
-  f =<< x = MaybeT (runMaybe nothing just =<< runMaybeT x)
-    where nothing = pure Nothing
-          just    = runMaybeT <$> f
+  f =<< x = MaybeT (runMaybe n j =<< runMaybeT x)
+    where n = pure Nothing
+          j = runMaybeT <$> f
 
 instance Lift MaybeT where
   lift m = MaybeT (pure <$> m)
@@ -257,7 +305,8 @@ consT m ms = ListT (g =<< m)
 instance Monad m => Monoid (ListT m a) where
   empty  = ListT (pure Nothing)
   a <> b = ListT (runMaybe z f =<< runListT a)
-    where f (h, t) = pure (Just (h, t <> b))  -- pure <$> Just <$> id *** (<> b)
+    where f (h, t) = pure (Just (h, t <> b))
+       -- f        = pure <$> Just <$> (id *** (<> b))
           z        = runListT b
 
 instance Functor m => Functor (ListT m) where
@@ -266,7 +315,7 @@ instance Functor m => Functor (ListT m) where
           f *** g = \(a, b) -> (f a, g b)
 
 instance Applicative m => Applicative (ListT m) where
-  pure x    = ListT (pure (pure (x, ListT (pure Nothing))))
+  pure x    = ListT (pure (Just (x, ListT (pure Nothing))))
   fs <*> xs = ListT (oq <$> runListT fs <*> runListT xs)
     where oq x y = op <$> x <*> y
           op (f, fs) (x, xs) = (f x, fs <*> xs)
@@ -282,6 +331,8 @@ instance Lift ListT where
 
 -- Reader
 --------------------------------------------------------------------------------
+-- Represents a computation which can read values from a shared environment
+-- and execute subcomputations under a modified environment
 
 runReader :: (e -> a) -> e -> a
 runReader x = x
@@ -337,6 +388,12 @@ instance Monad m => ReaderOps e (ReaderT e m) where
   ask       = ReaderT (\e -> pure e)
   local f g = ReaderT (\e -> runReaderT g (f e))
   reader f  = ReaderT (\e -> pure (f e))
+
+-- instance ReaderOps e m => ReaderOps e (WriterT w m) where
+-- instance ReaderOps e m => ReaderOps e (EitherT x m) where
+-- instance ReaderOps e m => ReaderOps e (StateT s m) where
+-- instance ReaderOps e m => ReaderOps e (MaybeT m) where
+-- instance ReaderOps e m => ReaderOps e (ListT m) where
 
 -- Writer
 --------------------------------------------------------------------------------
@@ -410,6 +467,12 @@ instance (Monoid w, Monad m) => WriterOps w (WriterT w m) where
   tell w   = WriterT (pure (w, ()))
   writer x = WriterT (pure x)
 
+-- instance WriterOps w m => WriterOps w (ReaderT e m) where
+-- instance WriterOps w m => WriterOps w (EitherT x m) where
+-- instance WriterOps w m => WriterOps w (StateT s m) where
+-- instance WriterOps w m => WriterOps w (MaybeT m) where
+-- instance WriterOps w m => WriterOps w (ListT m) where
+
 -- Either
 --------------------------------------------------------------------------------
 
@@ -422,57 +485,63 @@ runEither :: (a -> c) -> (b -> c) -> Either a b -> c
 runEither f _ (Left a)  = f a
 runEither _ f (Right b) = f b
 
-instance Functor (Either a) where
-  f <$> Right x = Right (f x)
+instance Functor (Either x) where
   f <$> Left x  = Left x
+  f <$> Right a = Right (f a)
 
-instance Applicative (Either a) where
+instance Applicative (Either x) where
   pure x = Right x
   Right f <*> Right x = Right (f x)
   _       <*> Left x  = Left x
   Left f  <*> _       = Left f
 
-instance Monad (Either a) where
-  f =<< Right x = f x
+instance Monad (Either x) where
   f =<< Left x  = Left x
+  f =<< Right a = f a
 
 -- EitherT
 --------------------------------------------------------------------------------
 
-newtype EitherT e m a
-  = EitherT { runEitherT :: m (Either e a) }
+newtype EitherT x m a
+  = EitherT { runEitherT :: m (Either x a) }
 
-instance Functor m => Functor (EitherT e m) where
+instance Functor m => Functor (EitherT x m) where
   f <$> x = EitherT ((f <$>) <$> runEitherT x)
 
-instance Applicative m => Applicative (EitherT e m) where
+instance Applicative m => Applicative (EitherT x m) where
   pure x  = EitherT (pure (Right x))
   f <*> x = EitherT ((<*>) <$> runEitherT f <*> runEitherT x)
 
-instance Monad m => Monad (EitherT e m) where
+instance Monad m => Monad (EitherT x m) where
   f =<< x = EitherT (runEither l r =<< runEitherT x)
-    where l e = pure (Left e)
+    where l x = pure (Left x)
           r a = runEitherT (f a)
 
-instance Lift (EitherT e) where
+instance Lift (EitherT x) where
   lift m = EitherT (pure <$> m)
 
 -- EitherOps
 --------------------------------------------------------------------------------
 
-class Monad m => EitherOps e m | m -> e where
-  throw :: e -> m a
-  catch :: m a -> (e -> m a) -> m a
+class Monad m => EitherOps x m | m -> x where
+  throw :: x -> m a
+  catch :: m a -> (x -> m a) -> m a
 
-instance EitherOps e (Either e) where
-  throw e   = Left e
+instance EitherOps x (Either x) where
+  throw x   = Left x
   catch m f = runEither f Right m
 
-instance Monad m => EitherOps e (EitherT e m) where
-  throw e   = EitherT (pure (throw e))
+instance Monad m => EitherOps x (EitherT x m) where
+  throw x   = EitherT (pure (throw x))
   catch m f = EitherT (runEither l r =<< runEitherT m)
     where l e = runEitherT (f e)
           r a = pure (Right a)
+
+-- instance EitherOps x m => EitherOps x (ReaderT e m) where
+-- instance EitherOps x m => EitherOps x (WriterT w m) where
+-- instance EitherOps x m => EitherOps x (StateT s m) where
+-- instance EitherOps x m => EitherOps x (MaybeT m) where
+-- instance EitherOps x m => EitherOps x (ListT m) where
 
 -- State
 --------------------------------------------------------------------------------
@@ -495,7 +564,7 @@ instance Functor (State s) where
 instance Applicative (State s) where
   pure x  = State (\s0 -> (s0, x))
   f <*> x = State (\s0 -> let (s1, f') = runState f s0
-                              (s2, x') = runState x s1 -- id *** f' (runState x s1)
+                              (s2, x') = runState x s1
                            in (s2, f' x'))
 
 instance Monad (State s) where
@@ -519,20 +588,11 @@ instance Functor m => Functor (StateT s m) where
   f <$> x = StateT (\s -> (f <$>) <$> runStateT x s)
   --      = StateT (((f <$>) <$>) <$> runStateT x)
 
--- TODO: Applicative m => Applicaitve (StateT s m)
 instance Monad m => Applicative (StateT s m) where
   pure x  = StateT (\s0 -> pure (s0, x))
   f <*> x = StateT (\s0 -> g =<< runStateT f s0)
     where g (s1, f') = (id *** f') <$> runStateT x s1
           f *** g    = \(a, b) -> (f a, g b)
-    --
-    --    runStateT f :: s -> m (s, a -> b)
-    --    runStateT x :: s -> m (s, a     )
-    --
-    -- runStateT f s0 :: m (s, a -> b)
-    -- runStateT x s1 :: m (s, a     )
-    --
-    -- ...
 
 instance Monad m => Monad (StateT s m) where
   f =<< x = StateT (\s -> g =<< runStateT x s)
@@ -559,3 +619,9 @@ instance Monad m => StateOps s (StateT s m) where
   get     = StateT (\s -> pure (s, s))
   put s   = StateT (\_ -> pure (s, ()))
   state f = StateT (\s -> pure (f s))
+
+-- instance StateOps s m => StateOps s (ReaderT e m) where
+-- instance StateOps s m => StateOps s (WriterT w m) where
+-- instance StateOps s m => StateOps s (EitherT x m) where
+-- instance StateOps s m => StateOps s (MaybeT m) where
+-- instance StateOps s m => StateOps s (ListT m) where
