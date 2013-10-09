@@ -6,7 +6,9 @@
 module Trans
   ( Monoid(..), concat
   , Functor(..), (<$)
+  , Bifunctor(..), first, second
   , Applicative(..), (*>), (<*)
+  , Biplicative(..), (**>), (<**)
   , Monad(..), Lift(..)
   --, (<=<), (>=>), filterM, foldM, forM, forever, mapM
   --, replicateM, sequence, unless, when, zipWithM
@@ -34,7 +36,7 @@ import Prelude
   ( Num(..), Ord(..), Char(..), Show(..)
   , Eq(..), Enum(..), Bounded(..)
   , IO(..), getChar, getLine, putChar, putStr, putStrLn, print
-  , id, flip, foldr, fst, snd )
+  , id, flip, (.), foldr, fst, snd )
 
 infixl 4 <$>
 infixl 4 <$
@@ -86,6 +88,17 @@ class Functor f where
 (<$) a b = h <$> b
   where h b = a
 
+-- Bifunctor
+--------------------------------------------------------------------------------
+class Bifunctor f where
+  (<$$>) :: (a -> c) -> (b -> d) -> f a b -> f c d
+
+first :: Bifunctor f => (a -> c) -> f a b -> f c b
+first f x = (f <$$> id) x
+
+second :: Bifunctor f => (b -> d) -> f a b -> f a d
+second g x = (id <$$> g) x
+
 -- Applicative
 --------------------------------------------------------------------------------
 -- An applicative functor is a functor with application providing operations
@@ -114,18 +127,33 @@ class Functor f => Applicative f where
 
 -- | Sequence two computations, discarding the value produced by the second
 (<*) :: Applicative f => f a -> f b -> f a
-(<*) f g = h <$> f <*> g
+f <* g = h <$> f <*> g
   where h a b = a
 
 -- | Sequence two computations, discarding the value produced by the first
 (*>) :: Applicative f => f a -> f b -> f b
-(*>) f g = h <$> f <*> g
+f *> g = h <$> f <*> g
+  where h a b = b
+
+-- Biplicative
+--------------------------------------------------------------------------------
+class Bifunctor f => Biplicative f where
+  (<**>) :: f (a -> c) (b -> d) -> f a b -> f c d
+
+-- | Sequence two computations, discarding the value produced by the second
+(<**) :: Biplicative f => f a b -> f c d -> f a b
+f <** g = (h <$$> h) f <**> g
+  where h a b = a
+
+-- | Sequence two computations, discarding the value produced by the first
+(**>) :: Biplicative f => f a b -> f c d -> f c d
+f **> g = (h <$$> h) f <**> g
   where h a b = b
 
 -- Monad
 --------------------------------------------------------------------------------
--- Monads are applicative functors whose computations can depend on the results
--- of previous computations.
+-- Monads are applicative functors whose computational structure can depend on
+-- the results of previous computations.
 
 class Applicative f => Monad f where
   (=<<) :: (a -> f b) -> f a -> f b
@@ -202,7 +230,7 @@ instance Monad Id where
 -- Maybe
 --------------------------------------------------------------------------------
 -- Represents a computation that either produces a value of type @a@ or instead
--- produces nothing.
+-- produces nothing. This can be useful for modeling partial functions.
 
 data Maybe a
   = Nothing
@@ -235,6 +263,13 @@ instance Monad Maybe where
 
 -- MaybeT
 --------------------------------------------------------------------------------
+-- Describes a computation with @m@ effects that produces computation with
+-- @Maybe@ effects. For example, @MaybeT ((->) Char) Int@ is a computation
+-- that has access to a @Char@ environment value and produces a @Maybe Int@
+-- computation.
+--
+-- Or another example, @MaybeT ((,) [Int]) Bool@ is a computation that emits a
+-- list of Int values as an effect of producing a @Maybe Bool@ computation.
 
 newtype MaybeT m a
   = MaybeT { runMaybeT :: m (Maybe a) }
@@ -252,7 +287,16 @@ instance Monad m => Monad (MaybeT m) where
           j = runMaybeT <$> f
 
 instance Lift MaybeT where
-  lift m = MaybeT (pure <$> m)
+  -- Convert a computation with @m@ effects that produces an @a@ value into one
+  -- which has @m@ effects and produces a @Maybe a@ computation. The name "lift"
+  -- is confusing because the given argument is not a partial function that is
+  -- lifted into @m@. That would be done by @m@'s monad transformer's @lift@!
+  --
+  -- Instead, this embeds the @m@ computation into the @MaybeT m@ monad, without
+  -- using any special features of @MaybeT m@ (there are none). Or, said another
+  -- way, @lift@ embeds @Maybe@ effects into @m@, without using any interesting
+  -- features of @Maybe@.
+  lift m = MaybeT (Just <$> m)
 
 -- List
 --------------------------------------------------------------------------------
@@ -275,6 +319,9 @@ instance Monad [] where
 
 -- ListT
 --------------------------------------------------------------------------------
+-- Describes a computation with @m@ effects that produces computation with the
+-- effects of @[]@. For example, @ListT (Either Char) Int@ is a computation
+-- that has access to a @Char@ environment value and produces a @Maybe Int@.
 
 -- newtype ListT m a
 --   = ListT { runListT :: m [a] }
@@ -306,13 +353,12 @@ instance Monad m => Monoid (ListT m a) where
   empty  = ListT (pure Nothing)
   a <> b = ListT (runMaybe z f =<< runListT a)
     where f (h, t) = pure (Just (h, t <> b))
-       -- f        = pure <$> Just <$> (id *** (<> b))
+       -- f        = pure <$> Just <$> second (<> b)
           z        = runListT b
 
 instance Functor m => Functor (ListT m) where
-  f <$> xs = ListT ((f *** rec <$>) <$> runListT xs)
+  f <$> xs = ListT ((f <$$> rec <$>) <$> runListT xs)
     where rec xs  = f <$> xs
-          f *** g = \(a, b) -> (f a, g b)
 
 instance Applicative m => Applicative (ListT m) where
   pure x    = ListT (pure (Just (x, ListT (pure Nothing))))
@@ -374,7 +420,7 @@ instance Lift (ReaderT e) where
 -- ReaderOps
 --------------------------------------------------------------------------------
 
-class ReaderOps e m | m -> e where
+class Monad m => ReaderOps e m | m -> e where
   ask    :: m e
   local  :: (e -> e) -> m a -> m a
   reader :: (e -> a) -> m a
@@ -385,15 +431,29 @@ instance ReaderOps e ((->) e) where
   reader f e  = f e
 
 instance Monad m => ReaderOps e (ReaderT e m) where
+  -- m a is an effectful computation producing an @a@ value
   ask       = ReaderT (\e -> pure e)
   local f g = ReaderT (\e -> runReaderT g (f e))
   reader f  = ReaderT (\e -> pure (f e))
 
--- instance ReaderOps e m => ReaderOps e (WriterT w m) where
--- instance ReaderOps e m => ReaderOps e (EitherT x m) where
--- instance ReaderOps e m => ReaderOps e (StateT s m) where
--- instance ReaderOps e m => ReaderOps e (MaybeT m) where
--- instance ReaderOps e m => ReaderOps e (ListT m) where
+-- Below we define reader operations on inner monads /wrapped/ by an
+-- outer monad where reader operations /are/ defined. For example if
+-- we have @runReader (runMaybeT ask)@, then we have built a Reader
+-- computation that produces a Maybe computation (which produces the
+-- value of the Reader environment).
+--
+-- The @ask@ in our example is delegated from @ReaderOps e (MaybeT m)@
+-- up the "monad stack" to the @ask@ method in @ReaderOps e ((->) e a)@.
+
+instance (ReaderOps e m, Monoid w) => ReaderOps e (WriterT w m) where
+  ask       = lift ask
+  local f m = P.error "todo"
+  reader f  = lift (reader f)
+
+instance ReaderOps e m => ReaderOps e (EitherT x m) where
+  ask       = lift ask
+  local f m = P.error "todo"
+  reader f  = lift (reader f)
 
 -- Writer
 --------------------------------------------------------------------------------
@@ -410,6 +470,20 @@ evalWriter (_, a) = a
 instance Functor ((,) w) where
   f <$> x = (w, f a)
     where (w, a) = x
+
+instance Bifunctor (,) where
+  f <$$> g = \(a, b) -> (f a, g b)
+
+instance Biplicative (,) where
+  f <**> g = (fa ga, fb gb)
+    where (fa, fb) = f
+          (ga, gb) = g
+
+instance (Monoid a, Monoid b) => Monoid (a, b) where
+  empty  = (empty, empty)
+  a <> b = (ax <> bx, ay <> by)
+    where (ax, ay) = a
+          (bx, by) = b
 
 instance Monoid w => Applicative ((,) w) where
   pure x  = (empty, x)
@@ -467,7 +541,10 @@ instance (Monoid w, Monad m) => WriterOps w (WriterT w m) where
   tell w   = WriterT (pure (w, ()))
   writer x = WriterT (pure x)
 
--- instance WriterOps w m => WriterOps w (ReaderT e m) where
+instance WriterOps w m => WriterOps w (ReaderT e m) where
+  tell w   = P.error "todo"
+  writer x = P.error "todo"
+
 -- instance WriterOps w m => WriterOps w (EitherT x m) where
 -- instance WriterOps w m => WriterOps w (StateT s m) where
 -- instance WriterOps w m => WriterOps w (MaybeT m) where
@@ -488,6 +565,11 @@ runEither _ f (Right b) = f b
 instance Functor (Either x) where
   f <$> Left x  = Left x
   f <$> Right a = Right (f a)
+
+instance Bifunctor Either where
+  f <$$> g = runEither f' g'
+    where f' a = Left (f a)
+          g' b = Right (g b)
 
 instance Applicative (Either x) where
   pure x = Right x
@@ -591,8 +673,7 @@ instance Functor m => Functor (StateT s m) where
 instance Monad m => Applicative (StateT s m) where
   pure x  = StateT (\s0 -> pure (s0, x))
   f <*> x = StateT (\s0 -> g =<< runStateT f s0)
-    where g (s1, f') = (id *** f') <$> runStateT x s1
-          f *** g    = \(a, b) -> (f a, g b)
+    where g (s1, f') = second f' <$> runStateT x s1
 
 instance Monad m => Monad (StateT s m) where
   f =<< x = StateT (\s -> g =<< runStateT x s)
@@ -605,7 +686,7 @@ instance Lift (StateT s) where
 -- StateOps
 --------------------------------------------------------------------------------
 
-class StateOps s m | m -> s where
+class Monad m => StateOps s m | m -> s where
   get   :: m s
   put   :: s -> m ()
   state :: (s -> (s, a)) -> m a
