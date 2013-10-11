@@ -33,10 +33,11 @@ module Trans
 import qualified Control.Applicative as A
 import qualified Prelude as P
 import Prelude
-  ( Num(..), Ord(..), Char(..), Show(..)
+  ( Num(..), Ord(..), Char(..)
   , Eq(..), Enum(..), Bounded(..)
+  , Show(..), showString, showParen
   , IO(..), getChar, getLine, putChar, putStr, putStrLn, print
-  , id, flip, (.), foldr, fst, snd )
+  , id, flip, (.), ($), foldr, fst, snd )
 
 infixl 4 <$>
 infixl 4 <$
@@ -274,6 +275,9 @@ instance Monad Maybe where
 newtype MaybeT m a
   = MaybeT { runMaybeT :: m (Maybe a) }
 
+instance Show (m (Maybe a)) => Show (MaybeT m a) where
+  showsPrec p x = showParen (p > 10) (showString "MaybeT " . showsPrec 11 (runMaybeT x))
+
 instance Functor m => Functor (MaybeT m) where
   f <$> x = MaybeT ((f <$>) <$> runMaybeT x)
 
@@ -328,6 +332,9 @@ instance Monad [] where
 
 newtype ListT m a
   = ListT { runListT :: m (Maybe (a, ListT m a)) }
+
+instance Show (m (Maybe (a, ListT m a))) => Show (ListT m a) where
+  showsPrec p x = showParen (p > 10) (showString "ListT " . showsPrec 11 (runListT x))
 
 toListT :: Monad m => [m a] -> ListT m a
 toListT xs = foldr consT empty xs
@@ -502,6 +509,9 @@ instance Monoid w => Monad ((,) w) where
 newtype WriterT w m a
   = WriterT { runWriterT :: m (w, a) }
 
+instance Show (m (w, a)) => Show (WriterT w m a) where
+  showsPrec p x = showParen (p > 10) (showString "WriterT " . showsPrec 11 (runWriterT x))
+
 execWriterT :: Functor m => WriterT w m a -> m w
 execWriterT x = fst <$> runWriterT x
 
@@ -586,6 +596,9 @@ instance Monad (Either x) where
 
 newtype EitherT x m a
   = EitherT { runEitherT :: m (Either x a) }
+
+instance Show (m (Either x a)) => Show (EitherT x m a) where
+  showsPrec p x = showParen (p > 10) (showString "EitherT " . showsPrec 11 (runEitherT x))
 
 instance Functor m => Functor (EitherT x m) where
   f <$> x = EitherT ((f <$>) <$> runEitherT x)
