@@ -39,6 +39,9 @@ infixl 6 -
 infixl 6 *
 infixl 6 /
 
+(.:) :: (c -> d) -> (a -> b -> c) -> a -> b -> d
+(.:) f g x y = f (g x y)
+
 class Semigroup a where
   -- (+) is a closed associative binary operation
   --   forall x:a y:a z:a. x + (y + z) == (x + y) + z
@@ -118,7 +121,7 @@ class Semicategory c => Category c where
 
 class Category c => Groupoid c where
   inverse :: c a b -> c b a
-  
+
 class Category c => Arrow c where
   -- todo
 
@@ -177,12 +180,23 @@ instance Boolean P.Bool where
   bottom      = P.False
   top         = P.True
 
+newtype Dual a
+  = Dual { getDual :: a }
+  deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
+
+instance Boolean a => Boolean (Dual a) where
+  meet        = Dual .: join `on` getDual
+  join        = Dual .: meet `on` getDual
+  complement  = Dual . complement . getDual
+  bottom      = Dual top
+  top         = Dual bottom
+
 ----------------------------------------------------------------------------
 
 newtype Sum a
   = Sum { getSum :: a }
   deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
-  
+
 instance Semigroup (Sum P.Integer) where
   a + b = Sum (op a b)
     where op = (P.+) `on` getSum
@@ -206,7 +220,7 @@ instance Pseudoring (Sum P.Integer) where
 
 instance Ring (Sum P.Integer) where
   one = Sum 1
-  
+
 instance Semigroup (Sum P.Rational) where
   a + b = Sum (op a b)
     where op = (P.+) `on` getSum
@@ -356,7 +370,26 @@ instance P.Ord a => Pseudoring (PowerSet a) where
 -- instance P.Ord a => Ring (PowerSet a) where
 --   one = TODO
 
--- ring with (+) being symmetric difference and (*) is intersection
+instance Boolean (PowerSet a) where
+  meet         = PowerSet .: S.union `on` getPowerSet
+  join         = PowerSet .: S.intersection `on` getPowerSet
+  complement a = PowerSet (getPowerSet top S.\\ getPowerSet a)
+  bottom       = PowerSet S.empty
+  top          = PowerSet P.undefined -- TODO
+
+----------------------------------------------------------------------------
+
+data Divisor a -- a ~ Nat
+  = Divisor { getDivisor :: a }
+  deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
+
+-- For any square-free natural number n (maxBound)
+instance (P.Integral, P.Bounded a) => Boolean (Divisors a) where
+  meet a b     = Divisor .: gcd `on` getDivisor
+  join a b     = Divisor .: lcm `on` getDivisor
+  complement a = Divisor (P.maxBound `P.div` getDivisor a)
+  bottom       = Divisor 1
+  top          = Divisor P.maxBound
 
 ----------------------------------------------------------------------------
 
