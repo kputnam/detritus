@@ -28,7 +28,7 @@ else
   # search all files recursively from 'path'
   #   gref path pattern
   name_filter = %w(*.x12 .*.swp *.rxml *.xrb *.css *.jpg *.jar *.class
-                   *.png *.flv *.swf *.gif *.pdf)
+                   *.png *.flv *.swf *.gif *.pdf *.hi)
   prune_dirs  = %w(.svn .hg .git target)
 end
 
