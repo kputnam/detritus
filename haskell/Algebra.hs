@@ -16,25 +16,31 @@ module Algebra
   , Category(..)
   , Groupoid(..)
   , Arrow(..)
-
+  , Boolean(..)
   , Sum(..)
   , Product(..)
   , Min(..)
   , Max(..)
   , First(..)
   , Last(..)
-  , Any(..)
-  , All(..)
+  , Or(..)
+  , And(..)
+  , Xor(..)
   ) where
 
+import Data.Function (on)
 import qualified Prelude    as P
 import qualified Data.Ratio as P ((%), numerator, denominator)
-import Data.Function (on)
+import qualified Data.Bits  as B
+import qualified Data.Set   as S
 
 infixl 6 +
 infixl 6 -
 infixl 6 *
 infixl 6 /
+
+(.:) :: (c -> d) -> (a -> b -> c) -> a -> b -> d
+(.:) f g x y = f (g x y)
 
 class Semigroup a where
   -- (+) is a closed associative binary operation
@@ -52,6 +58,8 @@ class Monoid a => Group a where
   -- forall x:a. negate x + x == zero
   negate :: a -> a
   (-)    :: a -> a -> a
+
+  -- default implementation
   a - b = a + negate b
 
 -- http://en.wikipedia.org/wiki/Abelian_group
@@ -113,7 +121,7 @@ class Semicategory c => Category c where
 
 class Category c => Groupoid c where
   inverse :: c a b -> c b a
-  
+
 class Category c => Arrow c where
   -- todo
 
@@ -125,51 +133,111 @@ instance Category (->) where
 
 ----------------------------------------------------------------------------
 
+-- For all elements a, b, and c
+--
+-- Associativity
+--    a `join` (b `join` c) = (a `join` b) `join` c
+--    a `meet` (b `meet` c) = (a `meet` b) `meet` c
+--
+-- Commutativity
+--    a `join` b = b `join` a
+--    a `meet` b = b `meet` a
+--
+-- Absorption
+--    a `join` (a `meet` b) = a
+--    a `meet` (a `join` b) = a
+--
+-- Identity
+--    a `join` bottom = a
+--    a `meet` top    = a
+--
+-- Distributivity
+--    a `join` (b `meet` c) = (a `join` b) `meet` (a `join` c)
+--    a `meet` (b `join` c) = (a `meet` b) `join` (a `meet` c)
+--
+-- Complements
+--    a `meet` complement a = top
+--    a `join` complement a = bottom
+--
+class Boolean a where
+  meet        :: a -> a -> a
+  join        :: a -> a -> a
+  complement  :: a -> a
+  bottom      :: a
+  top         :: a
+
+instance Boolean () where
+  meet _ _      = ()
+  join _ _      = ()
+  complement _  = ()
+  bottom        = ()
+  top           = ()
+
+instance Boolean P.Bool where
+  meet        = (P.&&)
+  join        = (P.||)
+  complement  = P.not
+  bottom      = P.False
+  top         = P.True
+
+newtype Dual a
+  = Dual { getDual :: a }
+  deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
+
+instance Boolean a => Boolean (Dual a) where
+  meet        = Dual .: join `on` getDual
+  join        = Dual .: meet `on` getDual
+  complement  = Dual . complement . getDual
+  bottom      = Dual top
+  top         = Dual bottom
+
+----------------------------------------------------------------------------
+
 newtype Sum a
   = Sum { getSum :: a }
   deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
-  
+
 instance Semigroup (Sum P.Integer) where
-  a + b = Sum (add a b)
-    where add = (P.+) `on` getSum
+  a + b = Sum (op a b)
+    where op = (P.+) `on` getSum
 
 instance Monoid (Sum P.Integer) where
   zero = Sum 0
 
 instance Group (Sum P.Integer) where
   negate = Sum . P.negate . getSum
-  a - b  = Sum (sub a b)
-    where sub = (P.-) `on` getSum
+  a - b  = Sum (op a b)
+    where op = (P.-) `on` getSum
 
 instance Abelian (Sum P.Integer) where
   -- forall a b. a + b == b + a
 
 instance Semiring (Sum P.Integer) where
-  a * b = Sum (mul a b)
-    where mul = (P.*) `on` getSum
+  a * b = Sum (op a b)
+    where op = (P.*) `on` getSum
 
 instance Pseudoring (Sum P.Integer) where
 
 instance Ring (Sum P.Integer) where
   one = Sum 1
-  
+
 instance Semigroup (Sum P.Rational) where
-  a + b = Sum (add a b)
-    where add = (P.+) `on` getSum
+  a + b = Sum (op a b)
+    where op = (P.+) `on` getSum
 
 instance Monoid (Sum P.Rational) where
   zero = Sum 0
 
 instance Group (Sum P.Rational) where
   negate = Sum . P.negate . getSum
-  a - b  = Sum (sub a b)
-    where sub = (P.-) `on` getSum
+  a - b  = Sum (op a b)
+    where op = (P.-) `on` getSum
 
 instance Abelian (Sum P.Rational) where
 
 instance Semiring (Sum P.Rational) where
-  a * b = Sum (mul a b)
-    where mul = (P.*) `on` getSum
+  a * b = Sum (op a b)
+    where op = (P.*) `on` getSum
 
 instance Pseudoring (Sum P.Rational) where
 
@@ -177,8 +245,8 @@ instance Ring (Sum P.Rational) where
   one = Sum 1
 
 instance Division (Sum P.Rational) where
-  a / b = Sum (div a b)
-    where div = (P./) `on` getSum
+  a / b = Sum (op a b)
+    where op = (P./) `on` getSum
 
   reciprocal a = Sum (bot a P.% top a)
     where top = P.denominator . getSum
@@ -225,40 +293,128 @@ newtype Max a
 
 ----------------------------------------------------------------------------
 
-newtype Any
-  = Any { getAny :: P.Bool }
+newtype Xor a
+  = Xor { getXor :: a }
   deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
 
-instance Semigroup Any where
-  a + b = Any (or a b)
-    where or = (P.||) `on` getAny
+instance B.Bits a => Semigroup (Xor a) where
+  a + b = Xor (B.xor (getXor a) (getXor b))
 
-instance Monoid Any where
-  zero = Any P.False
+instance B.Bits a => Monoid (Xor a) where
+  zero = Xor (B.clearBit (B.bit 0) 0)
 
-instance Semiring Any where
-  a * b = Any (mul a b)
-    where mul = (P.&&) `on` getAny
+instance B.Bits a => Group (Xor a) where
+  negate = Xor . B.complement . getXor
+  a - b  = a + b
+
+instance B.Bits a => Abelian (Xor a) where
 
 ----------------------------------------------------------------------------
 
-newtype All
-  = All { getAll :: P.Bool }
+newtype Or a -- Or
+  = Or { getOr :: a }
   deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
 
-instance Semigroup All where
-  a + b = All (and a b)
-    where and = (P.&&) `on` getAll
+instance B.Bits a => Semigroup (Or a) where
+  a + b = Or (op a b)
+    where op = (B..|.) `on` getOr
 
-instance Monoid All where
-  zero = All P.True
+instance B.Bits a => Monoid (Or a) where
+  zero = Or (B.clearBit (B.bit 0) 0)
 
-instance Semiring All where
-  a * b = All (mul a b)
-    where mul = (P.||) `on` getAll
+instance B.Bits a => Semiring (Or a) where
+  a * b = Or (op a b)
+    where op = (B..&.) `on` getOr
 
 ----------------------------------------------------------------------------
 
+newtype And a -- And
+  = And { getAnd :: a }
+  deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
+
+instance B.Bits a => Semigroup (And a) where
+  a + b = And (op a b)
+    where op = (B..&.) `on` getAnd
+
+instance B.Bits a => Monoid (And a) where
+  zero = And (B.complement (B.clearBit (B.bit 0) 0))
+
+instance B.Bits a => Semiring (And a) where
+  a * b = And (op a b)
+    where op = (B..|.) `on` getAnd
+
+----------------------------------------------------------------------------
+
+newtype PowerSet a
+  = PowerSet { getPowerSet :: S.Set (S.Set a) }
+  deriving (P.Eq, P.Ord, P.Read, P.Show)
+
+instance P.Ord a => Semigroup (PowerSet a) where
+  a + b = PowerSet (op (getPowerSet a) (getPowerSet b))
+    where op a b = S.union (a S.\\ b) (b S.\\ a)
+
+instance P.Ord a => Monoid (PowerSet a) where
+  zero = PowerSet S.empty
+
+instance P.Ord a => Group (PowerSet a) where
+  negate x = x
+
+instance P.Ord a => Abelian (PowerSet a) where
+
+instance P.Ord a => Semiring (PowerSet a) where
+  a * b = PowerSet (op a b)
+    where op = S.intersection `on` getPowerSet
+
+instance P.Ord a => Pseudoring (PowerSet a) where
+
+-- instance P.Ord a => Ring (PowerSet a) where
+--   one = TODO
+
+instance Boolean (PowerSet a) where
+  meet         = PowerSet .: S.union `on` getPowerSet
+  join         = PowerSet .: S.intersection `on` getPowerSet
+  complement a = PowerSet (getPowerSet top S.\\ getPowerSet a)
+  bottom       = PowerSet S.empty
+  top          = PowerSet P.undefined -- TODO
+
+----------------------------------------------------------------------------
+
+data Divisor a -- a ~ Nat
+  = Divisor { getDivisor :: a }
+  deriving (P.Eq, P.Ord, P.Read, P.Show, P.Bounded, P.Enum)
+
+-- For any square-free natural number n (maxBound)
+instance (P.Integral, P.Bounded a) => Boolean (Divisors a) where
+  meet a b     = Divisor .: gcd `on` getDivisor
+  join a b     = Divisor .: lcm `on` getDivisor
+  complement a = Divisor (P.maxBound `P.div` getDivisor a)
+  bottom       = Divisor 1
+  top          = Divisor P.maxBound
+
+----------------------------------------------------------------------------
+
+instance B.Bits P.Bool where
+  a .&. b         = a P.&& b
+  a .|. b         = a P.|| b
+  xor P.True P.False  = P.True
+  xor P.False P.True  = P.True
+  xor _ _             = P.False
+  complement          = P.not
+  rotate x _          = x
+  bit 0               = P.True
+  bit _               = P.False
+  setBit _ 0          = P.True
+  setBit x _          = x
+  clearBit _ 0        = P.False
+  clearBit x _        = x
+  complementBit x 0   = P.not x
+  complementBit x _   = x
+  testBit x 0         = x
+  testBit _ _         = P.False
+  bitSize _           = 1
+  isSigned _          = P.False
+
+-- Symmetric difference
 -- Rubik's Cube manipulations
 -- Modular arithmetic (WordN)
 -- Integers
