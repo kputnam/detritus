@@ -11,7 +11,10 @@ infixl 4 +$
 -- Endofunctors are a kind of functor that map objects and morphisms from one
 -- category to those of the same category. In Haskell, "Functor" maps objects
 -- (types) and morphisms (functions) in Hask to ... other types and functions
--- in Hask.
+-- in Hask. The verbose definition would look like this
+--
+--   class (Category c, Category d) => Functor c d f where
+--     (+$) :: c a b -> d (t a) (t b)
 --
 -- The type constructor `f` maps objects. For instance, when f is `Maybe`, types
 -- like `Int` and `Char` become `Maybe Int` and `Maybe Char`. Other examples are

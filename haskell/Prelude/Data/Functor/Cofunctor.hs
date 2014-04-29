@@ -1,6 +1,6 @@
 {-# LANGUAGE NoImplicitPrelude #-}
 
-module Data.Functor.Contravariant where
+module Data.Functor.Cofunctor where
 
-class Contravariant f where
+class Cofunctor f where
   (-$) :: (a -> b) -> f b -> f a

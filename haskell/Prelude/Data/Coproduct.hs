@@ -22,6 +22,7 @@ data a :+ b
 
 -- Equivalent to Disjoint (->)
 instance Bifunctor (:+) where
+--($$) :: (a -> a') -> (b -> b') -> a :+ b -> a' :+ b'
   ($$) f _ (L a) = L (f a)
   ($$) _ g (R b) = R (g b)
 
@@ -48,11 +49,13 @@ instance Bind ((:+) c) where
 
 instance Monad ((:+) a) where
 
-newtype SumT c m a
-  = SumT { runSumT :: m (c :+ a) }
+newtype SumT e m a
+  = SumT { runSumT :: m (e :+ a) }
+  -- SumT    :: m (e :+ a) -> SumT e m a
+  -- runSumT :: SumT e m a -> m (e :+ a)
 
-instance MonadTrans (SumT c) where
+instance MonadTrans (SumT e) where
   liftM m = SumT (pure . pure =<< m)
 
-instance MonadTransform (SumT c) where
+instance MonadTransform (SumT e) where
   transform f = SumT . f . runSumT

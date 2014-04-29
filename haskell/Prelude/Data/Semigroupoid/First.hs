@@ -6,8 +6,8 @@ import Data.Semigroupoid.Semigroupoid
 import Data.Semigroupoid.Tensor
 import Data.Product
 
-class (Semigroupoid (~>), Tensor (~>)) => First (~>) where
-  first :: a ~> b -> (a :* c) -> (b :* c)
+class (Semigroupoid m, Tensor m) => First m where
+  first :: m a b -> (a :* c) -> (b :* c)
 
 instance First (->) where
   first f (a :* c) = f a :* c

@@ -14,4 +14,5 @@ rmap :: Profunctor f => (b -> b') -> f a b -> f a b'
 rmap = (id `dmap`)
 
 instance Profunctor (->) where
+--dmap :: (a' -> a) -> (b -> b') -> (a -> b) -> (a' -> b')
   dmap g h f = h . f . g

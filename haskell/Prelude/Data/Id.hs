@@ -62,5 +62,3 @@ instance MinBound a => MinBound (Id a) where
 
 instance MaxBound a => MaxBound (Id a) where
   maxBound = Id maxBound
-
-instance (MaxBound a, MinBound a) => Bound (Id a)

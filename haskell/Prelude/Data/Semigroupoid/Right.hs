@@ -6,8 +6,8 @@ import Data.Semigroupoid.Semigroupoid
 import Data.Semigroupoid.Disjoint
 import Data.Coproduct
 
-class (Semigroupoid (~>), Disjoint (~>)) => Right (~>) where
-  right :: a ~> b -> (c :+ a) ~> (c :+ b)
+class (Semigroupoid m, Disjoint m) => Right m where
+  right :: m a b -> m (c :+ a) (c :+ b)
 
 instance Right (->) where
   right f (R a) = R (f a)

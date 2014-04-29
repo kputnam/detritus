@@ -5,7 +5,7 @@ import Data.Order.Order
 import Data.Semigroupoid.Monoid
 import Data.Semigroupoid.Semigroup
 
-data Max a
+newtype Max a
   = Max a
   | Minimum
 

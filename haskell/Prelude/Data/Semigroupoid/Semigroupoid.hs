@@ -3,8 +3,8 @@
 
 module Data.Semigroupoid.Semigroupoid where
 
-class Semigroupoid (~>) where
-  (.) :: b ~> c -> a ~> b -> a ~> c
+class Semigroupoid m where
+  (.) :: m b c -> m a b -> m a c
 
 instance Semigroupoid (->) where
   (.) f g x = f (g x)

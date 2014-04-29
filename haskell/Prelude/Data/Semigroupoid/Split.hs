@@ -8,5 +8,5 @@ import Data.Semigroupoid.CombineOut
 import Data.Semigroupoid.Left
 import Data.Semigroupoid.Right
 
-class (Category (~>), Left (~>), Right (~>), CombineOut (~>), ChooseOut (~>)) => Split (~>) where
-  out :: (a -> b) -> b ~> a
+class (Category m, Left m, Right m, CombineOut m, ChooseOut m) => Split m where
+  out :: (a -> b) -> m b a
