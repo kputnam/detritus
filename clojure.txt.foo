@@ -1,0 +1,99 @@
+Primitive Data Types
+  user=> :keyword
+  :keyword
+  user=> 'symbol
+  symbol
+  user=> "strings"
+  "strings"
+  user=> 3/7
+  3/7
+  user=> 3.1415927
+  3.1415927
+
+Composite Data Types
+  user=> (list 1 "x" 'z)
+  (1 "x" z)
+  user=> ["vector" 'literal]
+  ["vector" literal]
+  user=> #{'set 'literal}
+  #{literal set}
+  user=> {:key 'value :hash "map"}
+  {:key value, :hash "map"}
+  user=> (seq {:a 5 :b 6})
+  ([:a 5] [:b 6])
+
+Conj
+  user=> (conj (list 1 2 3) 4)
+  (4 1 2 3)
+  user=> (vec (list 1 2 3))
+  [1 2 3]
+  user=> (conj (vec (list 1 2 3)) 4)
+  [1 2 3 4]
+
+Remove
+  (disj set value)
+  (first list)
+  (rest list)
+
+Assoc (Replace Index)
+  user=> (assoc (vec (list 1 2 3)) 2 :thing)
+  [1 2 :thing]
+  user=> (assoc (vec (list 1 2 3)) 1 :thing)
+  [1 :thing 3]
+  user=> (get {:a "a"} :a)
+  "a"
+  user=> (assoc {:a "a"} :b "b")
+  {:a "a", :b "b"}
+
+Nested Collections
+  (update-in collection [keys] f)
+  (assoc-in colection [keys] value)
+  (get-in collection [keys])
+
+Definitions & Vars
+  user=> (def id :value)
+  #'user/id
+  user=> (var user/id)
+  #'user/id
+  user=> user/id
+  :value
+
+Recursion
+  (defn f [x] (if (empty? x)
+                :done
+                (do (prn :f x)
+                    (recur (rest x)))))
+
+Namespace
+  (ns new-namespace)
+  (in-ns 'new-namespace)
+  (keys (ns-publics 'clojure.core))
+  (require '[clojure.set :as set])
+  (require '[clojure.set :refer :all])
+  (require '[clojure.set :only [union ...]])
+  "use" is deprecated
+
+  (ns newname
+    (:require [clojure.core :as x])
+    (import [java.util Date ArrayUtil]
+            [java.lang String])
+
+    ...)
+
+Java Interop
+  (import 'java.util.UUID)
+  (. UUID randomUUID)
+  (UUID/randomUUID)
+  (Date. 8492020)
+  (new Date 8492020)
+  (. (new Date 8492020) getMonth)
+
+Ad-Hoc Polymorphism
+  protocols: dispatch on first argument type
+  multimethods: user-defined runtime dispatch, possibly open-world?
+
+Concurrency Primitives
+  refs
+  atoms
+  agents
+
